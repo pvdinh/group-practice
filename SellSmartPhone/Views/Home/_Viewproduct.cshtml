@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<SellSmartPhone.Models.viewproductHome>
+<div class="product-grid-holder">
+    <div id="spnoibat">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
+                <div class="product-item">
+                    @if (item.Isnew != 0)
+                    {
+                        <div class="ribbon blue"><span>Mới nhập</span></div>
+                    }
+                    @if (item.Ishot != 0)
+                    {
+                        <div class="ribbon red"><span>Hot</span></div>
+                    }
+                    <div class="image">
+                        <img alt="@item.Tensp" src="/image/smartphone/@item.Tenhangsx.Replace(" ",string.Empty).ToLower()/@item.Anh">
+                    </div>
+                    <div class="body">
+                        <div class="label-discount clear"></div>
+
+                        <div class="title">
+                            <a href="#">@item.Tensp</a>
+                        </div>
+
+                    </div>
+                    <div class="prices">
+                        <div class="price-current text-right"> @string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                    </div>
+                    <div class="hover-area">
+                        <div class="add-cart-button">
+                            <a href="#" class="le-button">Cho vào giỏ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

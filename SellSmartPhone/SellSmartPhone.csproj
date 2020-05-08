@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,9 +129,70 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\navbarController.cs" />
+    <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaoHanh.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Binhluan.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChitietDH.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\classData.cs" />
+    <Compile Include="Models\DonhangKH.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HangSX.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hopdong.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Khuyenmai.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSP.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nhacungcap.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sanpham.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SellPhoneDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SellPhoneDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SellPhoneDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SellPhoneDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPkhuyenmai.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Thongsokythuat.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viewproductHome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,14 +204,62 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image\bao da op lung\bao-da-led-view-samsungNote10Plus.png" />
+    <Content Include="image\bao da op lung\op-lung-da-iphoneXSMax.png" />
+    <Content Include="image\bao da op lung\op-lung-iphone-11-yippee-color-soft-case-.png" />
+    <Content Include="image\bao da op lung\op-lung-iphone-11ProMax.png" />
+    <Content Include="image\bao da op lung\op-lung-marvel-cho-samsungS10Plus.png" />
+    <Content Include="image\sac pin\sac-pin-anker.png" />
+    <Content Include="image\sac pin\sac-pin-aukey.png" />
+    <Content Include="image\sac pin\sac-pin-energizer.png" />
+    <Content Include="image\sac pin\sac-pin-huawei.png" />
+    <Content Include="image\sac pin\sac-pin-kem-loa-energizer.png" />
+    <Content Include="image\sac pin\sac-pin-samsung-wireless.png" />
+    <Content Include="image\smartphone\huawei\huawei-mate30-pro.png" />
+    <Content Include="image\smartphone\huawei\huawei-nova-5t.png" />
+    <Content Include="image\smartphone\huawei\huawei-nova-7i.png" />
+    <Content Include="image\smartphone\huawei\huawei-p30-lite.png" />
+    <Content Include="image\smartphone\huawei\huawei-P30-pro-skyblue.png" />
+    <Content Include="image\smartphone\huawei\huawei-p40-pro-silver.png" />
+    <Content Include="image\smartphone\apple\iphone-11-pro-max-space.png" />
+    <Content Include="image\smartphone\apple\iphone-7-plus-red-back.png" />
+    <Content Include="image\smartphone\apple\iphone-8-plus.png" />
+    <Content Include="image\smartphone\apple\iphone11-green.png" />
+    <Content Include="image\smartphone\apple\iphone_xr_64gb.png" />
+    <Content Include="image\smartphone\apple\iphone_xs_max_64gb.png" />
+    <Content Include="image\smartphone\vsmart\vsmart-active-3-6gb-ram.png" />
+    <Content Include="image\smartphone\vsmart\vsmart-joy-3-2g-ram.png" />
+    <Content Include="image\smartphone\vsmart\vsmart-joy-3-4g-ram.png" />
+    <Content Include="image\smartphone\vsmart\vsmart-live-xanh_1.png" />
+    <Content Include="image\smartphone\vsmart\vsmart-star.png" />
+    <Content Include="image\smartphone\vsmart\vsmart_active1_gold.png" />
+    <Content Include="Models\SellPhoneDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SellPhoneDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SellPhoneDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
+      <LastGenOutput>SellPhoneDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\SellPhoneDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SellPhoneDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SellPhoneDataModel.edmx.diagram">
+      <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -275,6 +392,37 @@
     <Content Include="template\assets\images\star-on.png" />
     <Content Include="template\assets\images\team\1.jpg" />
     <Content Include="template\assets\images\team\2.jpg" />
+    <Content Include="image\smartphone\nokia\nokia-3.2-2g-16g.png" />
+    <Content Include="image\smartphone\nokia\nokia-3.2-3g-32g.png" />
+    <Content Include="image\smartphone\nokia\nokia_23_xam.png" />
+    <Content Include="image\smartphone\nokia\nokia_23_xanh.png" />
+    <Content Include="image\smartphone\nokia\nokia_2720-flip.png" />
+    <Content Include="image\smartphone\nokia\nokia_7.2_xanh.png" />
+    <Content Include="image\smartphone\nokia\nokia_7.2_đen.png" />
+    <Content Include="image\smartphone\nokia\Thông tim sản phẩm.txt" />
+    <Content Include="image\smartphone\samsung\note_10_plus_den.png" />
+    <Content Include="image\smartphone\samsung\note_10_plus_trang.png" />
+    <Content Include="image\smartphone\samsung\ss-note-10-do.png" />
+    <Content Include="image\smartphone\samsung\ss-note_10_den.png" />
+    <Content Include="image\smartphone\samsung\ss-s20-hong.png" />
+    <Content Include="image\smartphone\samsung\ss-s20-plus-den.png" />
+    <Content Include="image\smartphone\samsung\ss-s20-plus-xanh.png" />
+    <Content Include="image\smartphone\samsung\ss-s20-ultra-den.png" />
+    <Content Include="image\smartphone\samsung\ss-s20-xam.png" />
+    <Content Include="image\smartphone\samsung\Thông số sp.txt" />
+    <Content Include="image\smartphone\samsung\z-flip.png" />
+    <Content Include="image\smartphone\xiaomi\Thông tin sản phẩm.txt" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-k30-pro-tim.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-k30-pro-xanh.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-mi-note-10-den.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-mi-note-10-trang.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-mi-note10-pro-trang.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-mi-note10-pro-xanh.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-redmi-note-8-trang.png" />
+    <Content Include="image\smartphone\xiaomi\xiaomi-redmi-note-8-xanh.png" />
+    <Content Include="image\tai nghe\sam sung\ss-Akg.png" />
+    <Content Include="image\tai nghe\sam sung\ss-Ltfit.png" />
+    <Content Include="image\tai nghe\sam sung\thông số.txt" />
     <Content Include="template\assets\js\bootstrap-hover-dropdown.min.js" />
     <Content Include="template\assets\js\bootstrap-slider.min.js" />
     <Content Include="template\assets\js\bootstrap.min.js" />
@@ -312,9 +460,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="template\assets\css\fonts\fontawesome-webfont.eot" />
     <Content Include="template\assets\css\fonts\fontawesome-webfont.ttf" />
     <Content Include="template\assets\css\fonts\fontawesome-webfont.woff" />
@@ -410,10 +555,15 @@
     <Content Include="template\assets\less\sidemenu.less" />
     <Content Include="template\assets\less\top-navbar.less" />
     <Content Include="template\assets\less\variables.less" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_Viewproduct.cshtml" />
+    <Content Include="Views\Home\_Viewproduct more.cshtml" />
+    <Content Include="Views\navbar\_Viewcategoryproduct.cshtml" />
+    <Content Include="Views\navbar\_ViewcategoryproductWithBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -427,6 +577,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

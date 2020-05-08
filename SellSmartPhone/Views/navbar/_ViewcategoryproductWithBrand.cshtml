@@ -1,0 +1,14 @@
+﻿@model IEnumerable<SellSmartPhone.Models.LoaiSP>
+
+@foreach (var item in Model)
+{
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">@item.TenLoai</a>
+        <ul class="dropdown-menu">
+            @foreach (var it in ViewBag.brand)
+            {
+                <li><a href="#">@it.tenhang</a></li>
+            }
+        </ul>
+    </li>
+}

@@ -1,0 +1,6 @@
+﻿@model IEnumerable<SellSmartPhone.Models.LoaiSP>
+
+@foreach (var item in Model)
+{
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">@item.TenLoai</a></li>
+}
