@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -200,21 +206,63 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="image\bao da op lung\bao-da-led-view-samsungNote10Plus.png" />
-    <Content Include="image\bao da op lung\op-lung-da-iphoneXSMax.png" />
-    <Content Include="image\bao da op lung\op-lung-iphone-11-yippee-color-soft-case-.png" />
-    <Content Include="image\bao da op lung\op-lung-iphone-11ProMax.png" />
-    <Content Include="image\bao da op lung\op-lung-marvel-cho-samsungS10Plus.png" />
-    <Content Include="image\sac pin\sac-pin-anker.png" />
-    <Content Include="image\sac pin\sac-pin-aukey.png" />
-    <Content Include="image\sac pin\sac-pin-energizer.png" />
-    <Content Include="image\sac pin\sac-pin-huawei.png" />
-    <Content Include="image\sac pin\sac-pin-kem-loa-energizer.png" />
-    <Content Include="image\sac pin\sac-pin-samsung-wireless.png" />
+    <Content Include="image\Bao da ốp lưng\bao-da-led-view-samsungNote10Plus.png" />
+    <Content Include="image\Bao da ốp lưng\op-lung-da-iphoneXSMax.png" />
+    <Content Include="image\Bao da ốp lưng\op-lung-iphone-11-yippee-color-soft-case-.png" />
+    <Content Include="image\Bao da ốp lưng\op-lung-iphone-11ProMax.png" />
+    <Content Include="image\Bao da ốp lưng\op-lung-marvel-cho-samsungS10Plus.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-anker.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-aukey.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-energizer.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-huawei.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-kem-loa-energizer.png" />
+    <Content Include="image\Sạc pin dự phòng\sac-pin-samsung-wireless.png" />
     <Content Include="image\smartphone\huawei\huawei-mate30-pro.png" />
     <Content Include="image\smartphone\huawei\huawei-nova-5t.png" />
     <Content Include="image\smartphone\huawei\huawei-nova-7i.png" />
@@ -243,6 +291,7 @@
       <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
       <LastGenOutput>SellPhoneDataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\SellPhoneDataModel.edmx">
@@ -258,6 +307,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -265,6 +316,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="template\assets\css\animate.min.css" />
     <Content Include="template\assets\css\blog-single.css" />
     <Content Include="template\assets\css\blue.css" />
@@ -399,7 +453,6 @@
     <Content Include="image\smartphone\nokia\nokia_2720-flip.png" />
     <Content Include="image\smartphone\nokia\nokia_7.2_xanh.png" />
     <Content Include="image\smartphone\nokia\nokia_7.2_đen.png" />
-    <Content Include="image\smartphone\nokia\Thông tim sản phẩm.txt" />
     <Content Include="image\smartphone\samsung\note_10_plus_den.png" />
     <Content Include="image\smartphone\samsung\note_10_plus_trang.png" />
     <Content Include="image\smartphone\samsung\ss-note-10-do.png" />
@@ -409,9 +462,7 @@
     <Content Include="image\smartphone\samsung\ss-s20-plus-xanh.png" />
     <Content Include="image\smartphone\samsung\ss-s20-ultra-den.png" />
     <Content Include="image\smartphone\samsung\ss-s20-xam.png" />
-    <Content Include="image\smartphone\samsung\Thông số sp.txt" />
     <Content Include="image\smartphone\samsung\z-flip.png" />
-    <Content Include="image\smartphone\xiaomi\Thông tin sản phẩm.txt" />
     <Content Include="image\smartphone\xiaomi\xiaomi-k30-pro-tim.png" />
     <Content Include="image\smartphone\xiaomi\xiaomi-k30-pro-xanh.png" />
     <Content Include="image\smartphone\xiaomi\xiaomi-mi-note-10-den.png" />
@@ -420,9 +471,8 @@
     <Content Include="image\smartphone\xiaomi\xiaomi-mi-note10-pro-xanh.png" />
     <Content Include="image\smartphone\xiaomi\xiaomi-redmi-note-8-trang.png" />
     <Content Include="image\smartphone\xiaomi\xiaomi-redmi-note-8-xanh.png" />
-    <Content Include="image\tai nghe\sam sung\ss-Akg.png" />
-    <Content Include="image\tai nghe\sam sung\ss-Ltfit.png" />
-    <Content Include="image\tai nghe\sam sung\thông số.txt" />
+    <Content Include="image\Tai nghe\ss-Akg.png" />
+    <Content Include="image\Tai nghe\ss-Ltfit.png" />
     <Content Include="template\assets\js\bootstrap-hover-dropdown.min.js" />
     <Content Include="template\assets\js\bootstrap-slider.min.js" />
     <Content Include="template\assets\js\bootstrap.min.js" />
@@ -560,10 +610,11 @@
     <Content Include="Views\Home\_Viewproduct more.cshtml" />
     <Content Include="Views\navbar\_Viewcategoryproduct.cshtml" />
     <Content Include="Views\navbar\_ViewcategoryproductWithBrand.cshtml" />
+    <Content Include="Views\search\index.cshtml" />
+    <Content Include="Views\search\_Viewproductsearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

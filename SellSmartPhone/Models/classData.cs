@@ -9,5 +9,6 @@ namespace SellSmartPhone.Models
     {
         public List<Sanpham> allsanphams { get; set; }
         public List<HangSX> allhangsxs { get; set; }
+        public List<LoaiSP> allloaisxs { get; set; }
     }
 }

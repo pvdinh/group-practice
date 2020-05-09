@@ -22,7 +22,7 @@ namespace SellSmartPhone.Controllers
         {
             Session["count"] = 12; //kiểm soát số lượng hiển thị sản phẩm
             Session["temp"] = 1;  //trạng thái phát hiện đang ở loại sp nào
-            data.allsanphams = db.Sanphams.Where(s=>s.LoaiSP == 1111).Take(8).ToList();
+            data.allsanphams = db.Sanphams.Where(s=>s.LoaiSP == 1111 && s.Ishot ==1).Take(8).ToList();
             foreach(var item in data.allsanphams)
             {
                 //lấy hãng sản xuất tương ứng với sản phẩm
@@ -63,7 +63,7 @@ namespace SellSmartPhone.Controllers
         {
             if(int.Parse(Session["temp"].ToString()) ==1 ) // sản phẩm nổi bật
             {
-                data.allsanphams = db.Sanphams.Where(s => s.LoaiSP == 1111).Take(int.Parse(Session["count"].ToString())).ToList();
+                data.allsanphams = db.Sanphams.Where(s => s.LoaiSP == 1111 && s.Ishot == 1).Take(int.Parse(Session["count"].ToString())).ToList();
                 foreach (var item in data.allsanphams)
                 {
                     //lấy hãng sản xuất tương ứng với sản phẩm
@@ -105,5 +105,6 @@ namespace SellSmartPhone.Controllers
             }
 
         }
+
     }
 }

@@ -31,5 +31,9 @@ namespace SellSmartPhone.Controllers
                 return PartialView("_ViewcategoryproductWithBrand", listcategory);
             }
         }
+        public ActionResult viewbefore()
+        {
+            return PartialView("_Viewbefore");
+        }
     }
 }
