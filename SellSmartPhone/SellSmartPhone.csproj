@@ -560,10 +560,10 @@
     <Content Include="Views\Home\_Viewproduct more.cshtml" />
     <Content Include="Views\navbar\_Viewcategoryproduct.cshtml" />
     <Content Include="Views\navbar\_ViewcategoryproductWithBrand.cshtml" />
+    <Content Include="Views\search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
