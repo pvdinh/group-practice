@@ -1,0 +1,82 @@
+﻿@model SellSmartPhone.Models.classData
+
+<div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
+    <!-- ========================================= PRODUCT FILTER ========================================= -->
+    <div class="widget">
+        <h1>Lọc sản phẩm</h1>
+        <form id="productfilter" action="/searchAdvanced/index" method="get" autocomplete="off">
+            <div class="body bordered">
+                <div class="category-filter">
+                    <h2>Loại</h2>
+                    <hr>
+                    <h5>Loại sản phẩm</h5>
+                    <ul>
+                        @foreach (var item in Model.allloaisps)
+                        {
+                            <li><input name="loaisp" class="le-checkbox" type="radio" value="@item.MaLoai"><i class="fake-box"></i> <label>@item.TenLoai</label></li>
+                        }
+                    <li><input name="loaisp" class="le-checkbox" type="radio" value=""><i class="fake-box"></i> <label>No type</label></li>
+                    </ul>
+                    <h5>Hãng sản xuất</h5>
+                    <ul>
+                        @foreach (var item in Model.allhangsxs)
+                        {
+                            <li><input name="hangsx" class="le-checkbox" type="radio" value="@item.MaHangSX"><i class="fake-box"></i> <label>@item.tenhang</label></li>
+                        }
+                        <li><input name="hangsx" class="le-checkbox" type="radio" value=""><i class="fake-box" ></i> <label>No type</label></li>
+                    </ul>
+                </div><!-- /.category-filter -->
+
+                <div class="price-filter">
+                    <h2>Giá</h2>
+                    <hr>
+                    <div class="price-range-holder">
+
+                        <h5>Từ</h5>
+                        <input class="le-input" type="number" name="minprice" step="500000">
+                        <h5>Đến</h5>
+                        <input class="le-input" type="number" name="maxprice" step="500000">
+                        <span class="min-max">
+                            Giá: 0 VNĐ - 100.000.000 VNĐ
+                        </span>
+                        <span class="filter-button">
+                            <a style="border: 2px solid #ececec; background-color:#ececec; border-radius:10px" href="#" onclick="document.getElementById('productfilter').submit();">Tìm kiếm</a>
+                        </span>
+                    </div>
+                </div><!-- /.price-filter -->
+            </div><!-- /.body -->
+        </form>
+    </div><!-- /.widget -->
+    <!-- ========================================= PRODUCT FILTER : END ========================================= -->
+
+
+    <div class="widget">
+        <h1 class="border">Giảm giá nhiều</h1>
+        <ul class="product-list">
+        </ul>
+    </div><!-- /.widget -->
+    <!-- ========================================= FEATURED PRODUCTS ========================================= -->
+    <div class="widget">
+        <h1 class="border">Sản phẩm nổi bật</h1>
+        <ul class="product-list">
+
+            <li class="sidebar-product-list-item">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 no-margin">
+                        <a href="#" class="thumb-holder">
+                            <img alt="" src="assets/images/products/product-small-01.jpg">
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 no-margin">
+                        <a href="#">Netbook Acer </a>
+                        <div class="price">
+                            <div class="price-prev">$2000</div>
+                            <div class="price-current">$1873</div>
+                        </div>
+                    </div>
+                </div>
+            </li><!-- /.sidebar-product-list-item -->
+        </ul><!-- /.product-list -->
+    </div><!-- /.widget -->
+    <!-- ========================================= FEATURED PRODUCTS : END ========================================= -->
+</div>

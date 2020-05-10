@@ -86,7 +86,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 text-left">
             <!--=============== paramater id,type,sort sẽ được pass đến /search/index mỗi lần chuyển trang =================-->
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = Session["id"],type =Session["type"],sort= Session["sort"],btnsearch=Session["btnsearch"]  }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "tableresult" }))
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = Session["id"],mahang=Session["mahang"],type =Session["type"],sort= Session["sort"],btnsearch=Session["btnsearch"], searchAdvanced = Session["searchAdvanced"]  }))
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="result-counter" style="font-weight:600;">

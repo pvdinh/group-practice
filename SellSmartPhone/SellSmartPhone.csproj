@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\navbarController.cs" />
+    <Compile Include="Controllers\searchAdvancedController.cs" />
     <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -612,6 +613,8 @@
     <Content Include="Views\navbar\_ViewcategoryproductWithBrand.cshtml" />
     <Content Include="Views\search\index.cshtml" />
     <Content Include="Views\search\_Viewproductsearch.cshtml" />
+    <Content Include="Views\searchAdvanced\_ViewsearchAdvanced.cshtml" />
+    <Content Include="Views\searchAdvanced\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

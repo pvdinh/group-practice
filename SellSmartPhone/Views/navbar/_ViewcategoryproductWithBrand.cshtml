@@ -1,13 +1,26 @@
-﻿@model IEnumerable<SellSmartPhone.Models.LoaiSP>
-
-@foreach (var item in Model)
+﻿@model SellSmartPhone.Models.classData
+@{ 
+    SellSmartPhone.Models.SellphonesEntities db = new SellSmartPhone.Models.SellphonesEntities();
+}
+@foreach (var item in Model.allloaisps)
 {
+    int i = 0;
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">@item.TenLoai</a>
         <ul class="dropdown-menu">
-            @foreach (var it in ViewBag.brand)
+            @foreach (var it in Model.allhangsxs)
             {
-                <li><a href="#">@it.tenhang</a></li>
+                int temp = it.MaHangSX;
+                var x = db.Sanphams.Where(s => s.LoaiSP == item.MaLoai && s.HangSX == temp).FirstOrDefault();
+                if (x != null)
+                {
+                    <li><a href="/search/index?id=@item.MaLoai&mahang=@it.MaHangSX">@it.tenhang</a></li>
+                    i++;
+                }
+            }
+            @if (i == 0)
+            {
+                <li><a href="#">Hết hàng</a></li>
             }
         </ul>
     </li>

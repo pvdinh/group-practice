@@ -12,7 +12,7 @@
 
 
             <!-- ========================================= SIDEBAR ========================================= -->
-            @{Html.RenderAction("result","searchAdvanced");}
+            @{Html.RenderAction("result");}
             <!-- ========================================= SIDEBAR : END ========================================= -->
             <!-- ========================================= CONTENT ========================================= -->
             <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
@@ -25,22 +25,22 @@
                             <div id="popularity-sort" class="le-select">
                                 <select onchange="location = this.value;">
                                     <option>Tuỳ chọn sắp xếp</option>
-                                    <option value="/search/index?sort=hang&id=@Session["id"]&mahang=@Session["mahang"]&type=@Session["type"]&btnsearch=@Session["btnsearch"]&searchAdvanced=@Session["searchAdvanced"]">Sắp xếp theo hãng</option>
-                                    <option value="/search/index?sort=gia&id=@Session["id"]&mahang=@Session["mahang"]&type=@Session["type"]&btnsearch=@Session["btnsearch"]&searchAdvanced=@Session["searchAdvanced"]">Sắp xếp theo giá</option>
+                                    <option value="/search/index?sort=hang&id=@Session["id"]&maloai=@Session["maloai"]&type=@Session["type"]&btnsearch=@Session["btnsearch"]">Sắp xếp theo hãng</option>
+                                    <option value="/search/index?sort=gia&id=@Session["id"]&maloai=@Session["maloai"]&type=@Session["type"]&btnsearch=@Session["btnsearch"]">Sắp xếp theo giá</option>
                                 </select>
                             </div>
                             <div id="item-count" class="le-select">
                                 <select onchange="location = this.value;">
                                     <option>Tuỳ chọn kiểu sắp xếp</option>
-                                    <option value="/search/index?type=tang&id=@Session["id"]&mahang=@Session["mahang"]&sort=@Session["sort"]&btnsearch=@Session["btnsearch"]&searchAdvanced=@Session["searchAdvanced"]">Tăng dần</option>
-                                    <option value="/search/index?type=giam&id=@Session["id"]&mahang=@Session["mahang"]&sort=@Session["sort"]&btnsearch=@Session["btnsearch"]&searchAdvanced=@Session["searchAdvanced"]">Giảm dần</option>
+                                    <option value="/search/index?type=tang&id=@Session["id"]&maloai=@Session["maloai"]&sort=@Session["sort"]&btnsearch=@Session["btnsearch"]">Tăng dần</option>
+                                    <option value="/search/index?type=giam&id=@Session["id"]&maloai=@Session["maloai"]&sort=@Session["sort"]&btnsearch=@Session["btnsearch"]">Giảm dần</option>
                                 </select>
                             </div>
                         </div><!-- /.control-bar -->
 
                         <div class="tab-content">
                             <div class="products-grid fade tab-pane active in">
-                                @{Html.RenderAction("resultproduct", new { id = Session["id"], btnsearch = Session["btnsearch"], mahang = Session["mahang"] });}
+                                
                             </div><!-- /.products-list -->
                         </div><!-- /.products-grid #list-view -->
                     </div><!-- /.tab-content -->
