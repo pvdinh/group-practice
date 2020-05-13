@@ -11,6 +11,7 @@ namespace SellSmartPhone.Controllers
     {
         SellphonesEntities db = new SellphonesEntities();
         classData data = new classData();
+        List<get_product_discount_Result> products = new List<get_product_discount_Result>();
         // GET: searchAdvanced
 
         [HttpGet]
@@ -20,8 +21,8 @@ namespace SellSmartPhone.Controllers
             if (minprice != null && maxprice != null)
             {
                 //nếu có (min,max) sẽ lọc ra danh sách sản phẩm để dùng bên /search/index
-                data.allsanphams = db.Sanphams.Where(s => s.Gia >= minprice && s.Gia <= maxprice).ToList();
-                Session["filterresult"] = data.allsanphams; // lưu list vào session
+                products = db.get_product_discount().Where(s => s.Gia >= minprice && s.Gia <= maxprice).ToList();
+                Session["filterresult"] = products; // lưu list vào session
             }
             else Session["filterresult"] = null;  //nếu filter mà ko có (min,max)
             return RedirectToAction("index","search",new { id=loaisp, mahang=hangsx, searchAdvanced = 1007 });

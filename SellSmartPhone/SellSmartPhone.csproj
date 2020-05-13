@@ -157,6 +157,9 @@
     <Compile Include="Models\DonhangKH.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\get_product_discount_Result.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HangSX.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>

@@ -328,6 +328,7 @@
           <Parameter Name="Thuoctinh" Type="nvarchar" Mode="In" />
           <Parameter Name="Giatri" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="get_product_discount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SellphonesModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoHanh" EntityType="Self.BaoHanh" Schema="dbo" store:Type="Tables" />
@@ -816,7 +817,22 @@
             <Parameter Name="Thuoctinh" Mode="In" Type="String" />
             <Parameter Name="Giatri" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="get_product_discount" ReturnType="Collection(SellphonesModel.get_product_discount_Result)" />
         </EntityContainer>
+        <ComplexType Name="get_product_discount_Result">
+          <Property Type="Int32" Name="MaSP" Nullable="false" />
+          <Property Type="String" Name="TenSP" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="LoaiSP" Nullable="false" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="HangSX" Nullable="false" />
+          <Property Type="String" Name="Anh" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Isnew" Nullable="true" />
+          <Property Type="Int32" Name="Ishot" Nullable="true" />
+          <Property Type="String" Name="tenhang" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Gia" Nullable="false" />
+          <Property Type="Int32" Name="Giamgia" Nullable="true" />
+          <Property Type="Double" Name="giá_mới" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -986,6 +1002,24 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="addproduct" FunctionName="SellphonesModel.Store.addproduct" />
           <FunctionImportMapping FunctionImportName="addthongsokythuat" FunctionName="SellphonesModel.Store.addthongsokythuat" />
+          <FunctionImportMapping FunctionImportName="get_product_discount" FunctionName="SellphonesModel.Store.get_product_discount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SellphonesModel.get_product_discount_Result">
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="LoaiSP" ColumnName="LoaiSP" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Isnew" ColumnName="Isnew" />
+                <ScalarProperty Name="Ishot" ColumnName="Ishot" />
+                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Giamgia" ColumnName="Giamgia" />
+                <ScalarProperty Name="giá_mới" ColumnName="giá mới" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
