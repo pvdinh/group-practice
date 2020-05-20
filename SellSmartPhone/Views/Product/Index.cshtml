@@ -90,13 +90,26 @@
                                 <div class="price-current"> @string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
                             </div>
                         }
-
+                        <script>
+                            function Add() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                num = num + 1;
+                                document.getElementById('number').value = num;
+                            }
+                            function Subtrac() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                if (num > 1) num--;
+                                document.getElementById('number').value = num;
+                            }
+                        </script>
                         <div class="qnt-holder">
                             <div class="le-quantity">
                                 <form>
-                                    <a class="minus" href="javascript:;"></a>
-                                    <input name="quantity" class="sl" readonly="readonly" type="text" value="1">
-                                    <a class="plus" href="javascript:;"></a>
+                                    <a class="minus" href="#" onclick="Subtrac();"></a>
+                                    <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="1">
+                                    <a class="plus" href="#" onclick="Add();"></a>
                                 </form>
                             </div>
                             <a id="addto-cart" href="#" class="le-button huge">Cho vào giỏ</a>
