@@ -1,0 +1,466 @@
+﻿@model SellSmartPhone.Models.get_product_discount_Result
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*thư viện ajax*@
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div>
+    @if (Model.LoaiSP == 1111)
+    {
+        <div id="single-product" class="">
+            <div class="container">
+                <div class="no-margin col-xs-12 col-sm-6 col-md-5 gallery-holder">
+                    <div class="product-item-holder size-big single-product-gallery small-gallery">
+                        <div id="owl-single-product" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                            <div class="owl-wrapper-outer">
+                                <div class="owl-wrapper" style="width: 2598px; left: 0px; display: block;">
+                                    <div class="owl-item" style="width: 433px;">
+                                        <div class="single-product-gallery-item" id="slide1">
+                                            <a data-rel="prettyphoto" href="#">
+                                                <img class="img-responsive" alt="@Model.TenSP" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh" width="353">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @*<div class="owl-item" style="width: 433px;">
+                                            <div class="single-product-gallery-item" id="slide2">
+                                                <a data-rel="prettyphoto" href="#">
+                                                    <img class="img-responsive" alt="" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh">
+                                                </a>
+                                            </div>
+                                        </div>*@
+                                </div>
+                            </div><!-- /.single-product-gallery-item -->
+                            <!-- /.single-product-gallery-item -->
+                            <!-- /.single-product-gallery-item -->
+                        </div><!-- /.single-product-slider -->
+
+                        <div class="single-product-gallery-thumbs gallery-thumbs">
+                            <div id="owl-single-product-thumbnails" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                <div class="owl-wrapper-outer">
+                                    <div class="owl-wrapper" style="width: 432px; left: 0px; display: block;">
+                                        <div class="owl-item" style="width: 72px;">
+                                            <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
+                                                <img width="67" alt="@Model.TenSP" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh">
+                                            </a>
+                                        </div>@*<div class="owl-item" style="width: 72px;">
+                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
+                                                    <img width="67" alt="" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh">
+                                                </a>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </div><!-- /#owl-single-product-thumbnails -->
+                        </div><!-- /.gallery-thumbs -->
+                    </div><!-- /.single-product-gallery -->
+                </div><!-- /.gallery-holder -->
+                <div class="no-margin col-xs-12 col-sm-7 body-holder">
+                    <div class="body">
+
+                        <div class="availability">
+                            <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
+                        </div>
+                        <div class="title"><a href="#">@Model.TenSP</a></div>
+
+                        @if (Model.Giamgia != null)
+                        {
+                            <div class="excerpt">
+                                <label>Khuyến mãi:</label>
+                                <div class="text-capitalize" style="background-color: #efefef">
+                                    <p>@ViewBag.ttkm.noidung</p>
+                                </div>
+                            </div>
+                            <div class="brand"></div>
+                            <div class="prices">
+                                <div class="price-prev">@string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
+                                <div class="price-current text-right"> @string.Format("{0:0,0}", Model.giá_mới)  VNĐ</div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="excerpt">
+                                <label>Khuyến mãi:</label>
+                                <div class="text-capitalize" style="background-color: #efefef">
+                                    <p>Hiện tại không có thông tin khuyến mãi cho sản phẩm này.</p>
+                                </div>
+                            </div>
+                            <div class="brand"></div>
+                            <div class="prices">
+                                <div class="price-current"> @string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
+                            </div>
+                        }
+                        <script>
+                            function Add() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                num = num + 1;
+                                document.getElementById('number').value = num;
+                            }
+                            function Subtrac() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                if (num > 1) num--;
+                                document.getElementById('number').value = num;
+                            }
+                        </script>
+                        <div class="qnt-holder">
+                            <div class="le-quantity">
+                                <form>
+                                    <a class="minus" href="#" onclick="Subtrac();"></a>
+                                    <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="1">
+                                    <a class="plus" href="#" onclick="Add();"></a>
+                                </form>
+                            </div>
+                            <a id="addto-cart" href="#" class="le-button huge">Cho vào giỏ</a>
+                        </div><!-- /.qnt-holder -->
+                    </div><!-- /.body -->
+                </div><!-- /.body-holder -->
+            </div><!-- /.container -->
+        </div><!-- /.single-product -->
+
+    }
+    else
+    {
+        <div id="single-product" class="">
+            <div class="container">
+                <div class="no-margin col-xs-12 col-sm-6 col-md-5 gallery-holder">
+                    <div class="product-item-holder size-big single-product-gallery small-gallery">
+                        <div id="owl-single-product" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                            <div class="owl-wrapper-outer">
+                                <div class="owl-wrapper" style="width: 2598px; left: 0px; display: block;">
+                                    <div class="owl-item" style="width: 433px;">
+                                        <div class="single-product-gallery-item" id="slide1">
+                                            <a data-rel="prettyphoto" href="#">
+                                                <img class="img-responsive" alt="@Model.TenSP" src="/image/@Model.TenLoai/@Model.Anh" width="353">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @*<div class="owl-item" style="width: 433px;">
+                                            <div class="single-product-gallery-item" id="slide2">
+                                                <a data-rel="prettyphoto" href="#">
+                                                    <img class="img-responsive" alt="" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh">
+                                                </a>
+                                            </div>
+                                        </div>*@
+                                </div>
+                            </div><!-- /.single-product-gallery-item -->
+                            <!-- /.single-product-gallery-item -->
+                            <!-- /.single-product-gallery-item -->
+                        </div><!-- /.single-product-slider -->
+
+                        <div class="single-product-gallery-thumbs gallery-thumbs">
+                            <div id="owl-single-product-thumbnails" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                <div class="owl-wrapper-outer">
+                                    <div class="owl-wrapper" style="width: 432px; left: 0px; display: block;">
+                                        <div class="owl-item" style="width: 72px;">
+                                            <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
+                                                <img width="67" alt="@Model.TenSP" src="/image/@Model.TenLoai/@Model.Anh">
+                                            </a>
+                                        </div>@*<div class="owl-item" style="width: 72px;">
+                                                <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
+                                                    <img width="67" alt="" src="/image/smartphone/@Model.tenhang.Replace(" ",string.Empty).ToLower()/@Model.Anh">
+                                                </a>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </div><!-- /#owl-single-product-thumbnails -->
+                        </div><!-- /.gallery-thumbs -->
+                    </div><!-- /.single-product-gallery -->
+                </div><!-- /.gallery-holder -->
+                <div class="no-margin col-xs-12 col-sm-7 body-holder">
+                    <div class="body">
+
+                        <div class="availability">
+                            <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
+                        </div>
+                        <div class="title"><a href="#">@Model.TenSP</a></div>
+
+                        <div class="brand"></div>
+                        @if (Model.Giamgia != null)
+                        {
+                            <div class="excerpt">
+                                <label>Khuyến mãi:</label>
+                                <div class="text-capitalize" style="background-color: #efefef">
+                                    <p>@ViewBag.ttkm.noidung</p>
+                                </div>
+                            </div>
+                            <div class="prices">
+                                <div class="price-prev">@string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
+                                <div class="price-current text-right"> @string.Format("{0:0,0}", Model.giá_mới)  VNĐ</div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="excerpt">
+                                <label>Khuyến mãi:</label>
+                                <div class="text-capitalize" style="background-color: #efefef">
+                                    <p>Hiện tại không có thông tin khuyến mãi cho sản phẩm này.</p>
+                                </div>
+                            </div>
+                            <div class="prices">
+                                <div class="price-current"> @string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
+                            </div>
+                        }
+                        <div class="qnt-holder">
+                            <div class="le-quantity">
+                                <form>
+                                    <a class="minus" href="javascript:;"></a>
+                                    <input name="quantity" class="sl" readonly="readonly" type="text" value="1">
+                                    <a class="plus" href="javascript:;"></a>
+                                </form>
+                            </div>
+                            <a id="addto-cart" href="#" class="le-button huge">Cho vào giỏ</a>
+                        </div><!-- /.qnt-holder -->
+                    </div><!-- /.body -->
+                </div><!-- /.body-holder -->
+            </div><!-- /.container -->
+        </div><!-- /.single-product -->
+    }
+
+
+    <!-- ========================================= SINGLE PRODUCT TAB ========================================= -->
+    <section id="single-product-tab">
+        <div class="container">
+            <div class="tab-holder">
+                <ul class="nav nav-tabs simple">
+                    <li class="active" id="mota"> <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#description" href="/Product/Infoproduct">Mô tả</a> </li>
+                    <li id="thongso"><a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#description" href="/Product/Thongso">Thông số kỹ thuật</a></li>
+                    <li id="binhluan"><a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#description" href="/Product/comment">Bình luận</a></li>
+                </ul><!-- /.nav-tabs -->
+                <div class="tab-content" id="description">
+                    @{Html.RenderAction("Infoproduct", "product"); }
+                </div><!-- /.tab-content -->
+            </div><!-- /.tab-holder -->
+        </div><!-- /.container -->
+    </section><!-- /#single-product-tab -->
+    <!-- ========================================= SINGLE PRODUCT TAB : END ========================================= -->
+    <!-- ========================================= SAN PHAM LIEN QUAN ========================================= -->
+    <!-- /#recently-reviewd -->
+    <section id="recently-reviewd" class="wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="container">
+            <div class="carousel-holder hover">
+
+                <div class="title-nav">
+                    <h2 class="h1">Sản Phẩm Liên Quan</h2>
+                    <div class="nav-holder">
+                        <a href="#prev" data-target="#owl-recently-viewed" class="slider-prev btn-prev fa fa-angle-left"></a>
+                        <a href="#next" data-target="#owl-recently-viewed" class="slider-next btn-next fa fa-angle-right"></a>
+                    </div>
+                </div><!-- /.title-nav -->
+                <div id="owl-recently-viewed" class="owl-carousel product-grid-holder owl-theme" style="opacity: 1; display: block;">
+                    <div class="owl-wrapper-outer">
+                        <div class="owl-wrapper" style="width: 2340px; left: 0px; display: block;">
+                            <div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="ribbon blue"><span>Mới nhập</span></div>
+                                        <div class="ribbon red"><span>Hot</span></div>
+                                        <div class="image">
+                                            <img alt="" src="/images/products/016131.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/01613">Điện thoại Oppo R7YGP (Vàng hồng)</a>
+                                            </div>
+                                            <div class="brand">OPPO</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current text-right"> 9,400,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('01613',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div><div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="ribbon green"><span>Giảm</span></div>
+                                        <div class="image">
+                                            <img alt="" src="/images/products/021151.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/02115">Điện thoại Samsung G530 (Xám)</a>
+                                            </div>
+                                            <div class="brand">SamSung</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-prev">3,500,000  VNĐ</div>             <div class="price-current text-right"> 3,150,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('02115',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div><div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="ribbon blue"><span>Mới nhập</span></div>
+                                        <div class="image">
+                                            <img alt="" src="/images/products/148841.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/14884">Điện thoại Oppo A51WW (Trắng)</a>
+                                            </div>
+                                            <div class="brand">OPPO</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current text-right"> 5,000,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('14884',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div><div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="image">
+                                            <img alt="" src="/images/products/236051.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/23605">Điện thoại Samsung SM-G318H (Đen)</a>
+                                            </div>
+                                            <div class="brand">SamSung</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current text-right"> 1,700,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('23605',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div><div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="ribbon blue"><span>Mới nhập</span></div>
+                                        <div class="image">
+                                            <img alt="" src="/images/products/236411.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/23641">điện thoại 2</a>
+                                            </div>
+                                            <div class="brand">OPPO</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current text-right"> 3,000,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('23641',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div><div class="owl-item" style="width: 195px;">
+                                <div class="no-margin carousel-item product-item-holder size-small hover">
+                                    <div class="product-item">
+                                        <div class="image">
+                                            <img alt="" src="/images/products/241731.jpg">
+                                        </div>
+                                        <div class="body">
+                                            <div class="label-discount clear"></div>
+
+                                            <div class="title">
+                                                <a href="/SanPham/Index/24173">Điện thoại Nokia 630 (Yellow)</a>
+                                            </div>
+                                            <div class="brand">Nokia</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current text-right"> 2,670,000  VNĐ</div>
+                                        </div>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="javascript:;" class="le-button" onclick="Addcart('24173',1)">Cho vào giỏ</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
+                                                <a class="btn-add-to-compare" href="#">So sánh</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.product-item -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.product-item-holder -->
+                </div><!-- /#recently-carousel -->
+            </div><!-- /.carousel-holder -->
+        </div><!-- /.container -->
+    </section><!-- /#recently-reviewd -->;
+    <!-- ========================================= RECENTLY VIEWED : END ========================================= -->
+</div>
+
+<script>
+    $("#mota").click(function () {
+        this.classList.add("active");
+        var element = document.getElementById("thongso");
+        element.classList.remove("active");
+        var element1 = document.getElementById("binhluan");
+        element1.classList.remove("active");
+    })
+    $("#thongso").click(function () {
+        this.classList.add("active");
+        var element = document.getElementById("mota");
+        element.classList.remove("active");
+        var element1 = document.getElementById("binhluan");
+        element1.classList.remove("active");
+    })
+    $("#binhluan").click(function () {
+        this.classList.add("active");
+        var element = document.getElementById("mota");
+        element.classList.remove("active");
+        var element1 = document.getElementById("thongso");
+        element1.classList.remove("active");
+    })
+</script>

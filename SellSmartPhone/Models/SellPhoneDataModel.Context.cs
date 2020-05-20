@@ -103,5 +103,10 @@ namespace SellSmartPhone.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addthongsokythuat", maSPParameter, thuoctinhParameter, giatriParameter);
         }
+    
+        public virtual ObjectResult<get_product_discount_Result> get_product_discount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_product_discount_Result>("get_product_discount");
+        }
     }
 }

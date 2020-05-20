@@ -1,0 +1,17 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<SellSmartPhone.Models.get_product_discount_Result>
+@{Html.RenderPartial("/Views/Home/_Viewproduct.cshtml"); }
+<div class="pagination-holder" style="clear:both;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 text-left">
+            <!--=============== paramater id,type,sort sẽ được pass đến /search/index mỗi lần chuyển trang =================-->
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = Session["id"], mahang = Session["mahang"], type = Session["type"], sort = Session["sort"], btnsearch = Session["btnsearch"], searchAdvanced = Session["searchAdvanced"] }))
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="result-counter" style="font-weight:600;">
+                Có tât cả <span>@ViewBag.countnumber</span> sản phẩm.
+            </div>
+        </div>
+    </div><!-- /.row -->
+</div><!-- /.pagination-holder -->
