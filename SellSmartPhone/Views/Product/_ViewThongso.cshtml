@@ -1,0 +1,14 @@
+﻿@model IEnumerable<SellSmartPhone.Models.Thongsokythuat>
+<div class="tab-pane active" id="additional-info">
+    <h2>Thông số kỹ thuật của Điện thoại @ViewBag.data.TenSP</h2><br >
+    <ul class="tabled-data">
+        @foreach (var item in Model)
+        {
+            <li>
+                <label>@item.Thuoctinh : </label>
+                <div class="value" style="padding-left:10px;">@item.Giatri</div>
+            </li>
+        }
+        </ul>
+
+</div><!-- /.tab-pane #additional-info -->

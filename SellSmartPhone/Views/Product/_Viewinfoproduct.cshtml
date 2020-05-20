@@ -1,0 +1,15 @@
+﻿@model SellSmartPhone.Models.get_product_discount_Result
+
+<div class="tab-pane active" id="description">
+    <div class="meta-row">
+        <div class="inline">
+            <label>Loại:</label>
+            <span><a href="/Search/index/@Model.LoaiSP">@Model.TenLoai</a></span>
+        </div><!-- /.inline -->
+        <span class="seperator">/</span>
+        <div class="inline">
+            <label>Hãng sản xuất:</label>
+            <span><a href="/Search/index?mahang=@Model.HangSX">@Model.tenhang</a></span>
+        </div><!-- /.inline -->
+    </div><!-- /.meta-row -->
+</div>
