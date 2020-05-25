@@ -125,6 +125,7 @@
           <Property Name="Anh" Type="char" MaxLength="50" Nullable="false" />
           <Property Name="Isnew" Type="int" />
           <Property Name="Ishot" Type="int" />
+          <Property Name="SoLuong" Type="int" />
         </EntityType>
         <EntityType Name="SPkhuyenmai">
           <Key>
@@ -311,6 +312,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="add_comment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaBL" Type="int" Mode="In" />
+          <Parameter Name="MaSP" Type="int" Mode="In" />
+          <Parameter Name="MaKH" Type="int" Mode="In" />
+          <Parameter Name="Noidung" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="Hoten" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="addproduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaSP" Type="int" Mode="In" />
           <Parameter Name="TenSP" Type="nvarchar" Mode="In" />
@@ -328,7 +338,22 @@
           <Parameter Name="Thuoctinh" Type="nvarchar" Mode="In" />
           <Parameter Name="Giatri" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="edit_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="password" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="get_comment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSP" Type="int" Mode="In" />
+        </Function>
         <Function Name="get_product_discount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="update_account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nchar" Mode="In" />
+          <Parameter Name="phone" Type="char" Mode="In" />
+          <Parameter Name="Hoten" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="SellphonesModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoHanh" EntityType="Self.BaoHanh" Schema="dbo" store:Type="Tables" />
@@ -544,6 +569,7 @@
           <NavigationProperty Name="LoaiSP1" Relationship="Self.FK__Sanpham__LoaiSP__145C0A3F" FromRole="Sanpham" ToRole="LoaiSP" />
           <NavigationProperty Name="SPkhuyenmais" Relationship="Self.FK__SPkhuyenma__MaSP__1DE57479" FromRole="Sanpham" ToRole="SPkhuyenmai" />
           <NavigationProperty Name="Thongsokythuats" Relationship="Self.FK__Thongsokyt__MaSP__182C9B23" FromRole="Sanpham" ToRole="Thongsokythuat" />
+          <Property Name="SoLuong" Type="Int32" />
         </EntityType>
         <EntityType Name="SPkhuyenmai">
           <Key>
@@ -818,6 +844,30 @@
             <Parameter Name="Giatri" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="get_product_discount" ReturnType="Collection(SellphonesModel.get_product_discount_Result)" />
+          <FunctionImport Name="add_comment">
+            <Parameter Name="MaBL" Mode="In" Type="Int32" />
+            <Parameter Name="MaSP" Mode="In" Type="Int32" />
+            <Parameter Name="MaKH" Mode="In" Type="Int32" />
+            <Parameter Name="Noidung" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="Hoten" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_comment" ReturnType="Collection(SellphonesModel.get_comment_Result)">
+          <Parameter Name="MaSP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="edit_password">
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_account">
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="Hoten" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="get_product_discount_Result">
           <Property Type="Int32" Name="MaSP" Nullable="false" />
@@ -832,6 +882,15 @@
           <Property Type="Double" Name="Gia" Nullable="false" />
           <Property Type="Int32" Name="Giamgia" Nullable="true" />
           <Property Type="Double" Name="giá_mới" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_comment_Result">
+          <Property Type="Int32" Name="MaSP" Nullable="false" />
+          <Property Type="Int32" Name="MaKH" Nullable="true" />
+          <Property Type="String" Name="Noidung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Ngaydang" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -958,6 +1017,7 @@
           <EntitySetMapping Name="Sanphams">
             <EntityTypeMapping TypeName="SellphonesModel.Sanpham">
               <MappingFragment StoreEntitySet="Sanpham">
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="LoaiSP" ColumnName="LoaiSP" />
@@ -1020,6 +1080,22 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="add_comment" FunctionName="SellphonesModel.Store.add_comment" />
+          <FunctionImportMapping FunctionImportName="get_comment" FunctionName="SellphonesModel.Store.get_comment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SellphonesModel.get_comment_Result">
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+                <ScalarProperty Name="Ngaydang" ColumnName="Ngaydang" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="edit_password" FunctionName="SellphonesModel.Store.edit_password" />
+          <FunctionImportMapping FunctionImportName="update_account" FunctionName="SellphonesModel.Store.update_account" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

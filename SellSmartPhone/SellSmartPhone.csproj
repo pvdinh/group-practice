@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\navbarController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -156,6 +157,9 @@
     </Compile>
     <Compile Include="Models\classData.cs" />
     <Compile Include="Models\DonhangKH.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_comment_Result.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\get_product_discount_Result.cs">
@@ -623,6 +627,12 @@
     <Content Include="Views\Product\_Viewinfoproduct.cshtml" />
     <Content Include="Views\Product\_ViewThongso.cshtml" />
     <Content Include="Views\Product\_Viewcomment.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\EditInfo.cshtml" />
+    <Content Include="Views\Product\_ViewproductRelate.cshtml" />
+    <Content Include="Views\search\_Viewdiscount.cshtml" />
+    <Content Include="Views\search\_Viewlastest.cshtml" />
+    <Content Include="Views\Account\_ViewImageUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

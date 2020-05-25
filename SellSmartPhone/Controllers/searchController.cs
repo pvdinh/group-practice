@@ -35,7 +35,7 @@ namespace SellSmartPhone.Controllers
 
             //lọc khi click ở navbar, có thể dùng 1 phần cho fliter cùng với sesion["searchAdvanced"]
             Session["mahang"] = mahang;
-            Session["id"] = id; //mã của sản phẩm
+            Session["id"] = id; //mã của loai sản phẩm
             /*===========================*/
             return View();
         }
@@ -300,7 +300,18 @@ namespace SellSmartPhone.Controllers
             ViewBag.countnumber = listproducts != null ? listproducts.Count() : 0;
             return PartialView("_Viewproductsearch", listproducts.ToPagedList(page ?? 1, 8));
         }
-
+        public ActionResult discount()
+        {
+            listproducts = db.get_product_discount().Where(s => s.Giamgia != null).ToList();
+            listproducts = listproducts.OrderBy(s => Guid.NewGuid()).Take(2).ToList();
+            return PartialView("_Viewdiscount",listproducts);
+        }
+        public ActionResult lastest()
+        {
+            listproducts = db.get_product_discount().Where(s => s.Ishot == 1).ToList();
+            listproducts = listproducts.OrderBy(s => Guid.NewGuid()).Take(2).ToList();
+            return PartialView("_Viewlastest",listproducts);
+        }
         public void gettangloai(int? id)
         {
             if (string.Compare(Session["sort"].ToString(), "hang", true) == 0)

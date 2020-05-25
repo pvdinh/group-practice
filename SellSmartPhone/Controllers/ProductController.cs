@@ -23,9 +23,11 @@ namespace SellSmartPhone.Controllers
             }
             get_product_discount_Result data = new get_product_discount_Result();
             data = db.get_product_discount().Where(s => s.MaSP == id).FirstOrDefault();
+            //kiểm tra hàng còn hay không
+            var status = db.Sanphams.Where(s => s.MaSP == id).Select(s => s.SoLuong).FirstOrDefault();
+            ViewBag.status = status;
             return View(data);
         }
-
         public ActionResult Infoproduct()
         {
             int id = int.Parse(Session["id"].ToString());
@@ -43,9 +45,42 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult comment()
         {
+            ViewBag.user = Session["user"];
             int id = int.Parse(Session["id"].ToString());
-            get_product_discount_Result data = db.get_product_discount().Where(s => s.MaSP == id).FirstOrDefault();
-            return PartialView("_Viewcomment", data);
+            List<get_comment_Result> listcomment = db.get_comment(id).ToList();
+            return PartialView("_Viewcomment",listcomment);
         }
+        public ActionResult productReative()
+        {
+            int id = int.Parse(Session["id"].ToString());
+            //lay ma loai san pham thong qua id san pham
+            var x = db.Sanphams.Where(s => s.MaSP == id).Select(s => s.LoaiSP).FirstOrDefault();
+            //lay danh sach san pham thong qua ma loa san pham
+            List<get_product_discount_Result> products = new List<get_product_discount_Result>();
+            products = db.get_product_discount().Where(s=>s.LoaiSP == x && s.MaSP != id).ToList();
+            products = products.OrderBy(s => Guid.NewGuid()).Take(6).ToList();
+            return PartialView("_ViewproductRelate",products);
+        }
+        [HttpPost]
+        public ActionResult addcomment(string HoTen,string Email,string NoiDung)
+        {
+            ViewBag.user = Session["user"];
+            int id = int.Parse(Session["id"].ToString());
+            int lastest = db.Binhluans.OrderByDescending(s => s.MaBL).Take(1).Select(s=>s.MaBL).FirstOrDefault();
+            if(Session["user"] == null)
+            {
+                DateTime ngaydang = DateTime.Now;
+                db.add_comment(lastest + 1, id, null, NoiDung, ngaydang, HoTen, Email);
+            }
+            else
+            {
+                DateTime ngaydang = DateTime.Now;
+                Account x = (Account)Session["user"];
+                db.add_comment(lastest + 1, id,x.IDAccount, NoiDung, ngaydang, HoTen, Email);
+            }
+            List<get_comment_Result> listcomment = db.get_comment(id).ToList();
+            return PartialView("_Viewcomment", listcomment);
+        }
+
     }
 }
