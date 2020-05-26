@@ -1,42 +1,85 @@
-﻿<div class="tab-pane active" id="reviews">
+﻿@model IEnumerable<SellSmartPhone.Models.get_comment_Result>
+<div class="tab-pane active" id="reviews">
     <div class="comments" id="Comments">
-        <span class="bold">Gồm 3 bình luận </span>
+        <span class="bold">Gồm @Model.Count() bình luận </span>
         <hr>
-        <div class="comment-item">
-            <div class="row no-margin">
-                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                    <div class="avatar">
-                        <img alt="avatar" src="/template/assets/images/default-avatar.jpg ">
+        @foreach (var item in Model)
+        {
+            if (item.MaKH != null)
+            {
+                <div class="comment-item">
+                    <div class="row no-margin">
+                        <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
+                            <div class="avatar">
+                                <img alt="avatar" src="/template/assets/images/@item.Avatar ">
 
-                    </div><!-- /.avatar -->
-                </div><!-- /.col -->
+                            </div><!-- /.avatar -->
+                        </div><!-- /.col -->
 
-                <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                    <div class="comment-body">
-                        <div class="meta-info">
-                            <div class="author inline">
-                                <a href="#" class="bold">f</a>
+                        <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
+                            <div class="comment-body">
+                                <div class="meta-info">
+                                    <div class="author inline">
+                                        <a href="#" class="bold">@item.Hoten</a>
 
 
-                            </div>
-                            <div class="star-holder inline">
+                                    </div>
+                                    <div class="star-holder inline">
 
-                            </div>
-                            <div class="date inline pull-right">
-                                5/13/2020 12:38:11 PM
-                            </div>
-                        </div><!-- /.meta-info -->
-                        <p class="comment-text">
+                                    </div>
+                                    <div class="date inline pull-right">
+                                        @item.Ngaydang
+                                    </div>
+                                </div><!-- /.meta-info -->
+                                <p class="comment-text">
+                                @item.Noidung
+                                </p><!-- /.comment-text -->
+                            </div><!-- /.comment-body -->
+                        </div><!-- /.col -->
 
-                            a
-                        </p><!-- /.comment-text -->
-                    </div><!-- /.comment-body -->
-                </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.comment-item --><div style="padding-left: 100px">
+                </div> <hr>
+            }
+            else
+            {
+                <div class="comment-item">
+                    <div class="row no-margin">
+                        <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
+                            <div class="avatar">
+                                <img alt="avatar" src="/template/assets/images/default-avatar.jpg ">
 
-            </div><!-- /.row -->
-        </div><!-- /.comment-item --><div style="padding-left: 100px">
-        </div>    <hr>
-        </div><div id="nav">
+                            </div><!-- /.avatar -->
+                        </div><!-- /.col -->
+
+                        <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
+                            <div class="comment-body">
+                                <div class="meta-info">
+                                    <div class="author inline">
+                                        <a href="#" class="bold">@item.Hoten</a>
+
+
+                                    </div>
+                                    <div class="star-holder inline">
+
+                                    </div>
+                                    <div class="date inline pull-right">
+                                        @item.Ngaydang
+                                    </div>
+                                </div><!-- /.meta-info -->
+                                <p class="comment-text">
+                                @item.Noidung
+                                </p><!-- /.comment-text -->
+                            </div><!-- /.comment-body -->
+                        </div><!-- /.col -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.comment-item --><div style="padding-left: 100px">
+                </div> <hr>
+            }
+
+        }
+    </div><div id="nav">
             <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li></ul></div>
         </div>
 
@@ -46,27 +89,54 @@
         <div class="col-sm-8 col-xs-12">
             <div class="new-review-form">
                 <h2>Viết bình luận</h2>
-                <form action="/Comment/AddComment/01613" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#Comments" id="contact-form" method="post">
-                    <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
-                        <div class="col-xs-12 col-sm-6">
-                            <input class="le-input text-box single-line" id="HoTen" name="HoTen" placeholder="Họ tên của bạn" type="text" value="">
-                            <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
+                @if (Session["user"] == null)
+                {
+                    <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
+                            <div class="col-xs-12 col-sm-6">
+                                <input class="le-input text-box single-line" id="HoTen" name="HoTen" placeholder="Họ tên của bạn" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <input class="le-input text-box single-line" id="Email" name="Email" placeholder="Email của bạn" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <input class="le-input text-box single-line" id="Email" name="Email" placeholder="Email của bạn" type="text" value="">
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        <!-- /.field-row -->
+                        <div class="field-row">
+                            <label>Sản phẩm này như thế nào?</label>
+                            <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
+                        </div><!-- /.field-row -->
+                        <div class="buttons-holder">
+                            <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
+                        </div><!-- /.buttons-holder -->
+                    </form>
+                }
+                else
+                {
+                    <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
+                            <div class="col-xs-12 col-sm-6">
+                                <input class="le-input text-box single-line" id="HoTen" name="HoTen" type="text" value="@ViewBag.user.Hoten">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <input class="le-input text-box single-line" id="Email" name="Email" type="text" value="@ViewBag.user.Email">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.field-row -->
-                    <div class="field-row">
-                        <label>Sản phẩm này như thế nào?</label>
-                        <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8"></textarea>
-                        <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
-                    </div><!-- /.field-row -->
-                    <div class="buttons-holder">
-                        <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
-                    </div><!-- /.buttons-holder -->
-                </form>
+                        <!-- /.field-row -->
+                        <div class="field-row">
+                            <label>Sản phẩm này như thế nào?</label>
+                            <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
+                        </div><!-- /.field-row -->
+                        <div class="buttons-holder">
+                            <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
+                        </div><!-- /.buttons-holder -->
+                    </form>
+                }
             </div><!-- /.new-review-form -->
         </div><!-- /.col -->
     </div><!-- /.add-review -->

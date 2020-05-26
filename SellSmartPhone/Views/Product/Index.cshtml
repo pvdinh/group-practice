@@ -57,10 +57,19 @@
                 </div><!-- /.gallery-holder -->
                 <div class="no-margin col-xs-12 col-sm-7 body-holder">
                     <div class="body">
+                        @if (ViewBag.status > 0)
+                        {
+                            <div class="availability">
+                                <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="availability">
+                                <label>Tình trạng:</label> <span class="not-available"> Hết hàng </span>
+                            </div>
+                        }
 
-                        <div class="availability">
-                            <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
-                        </div>
                         <div class="title"><a href="#">@Model.TenSP</a></div>
 
                         @if (Model.Giamgia != null)
@@ -95,6 +104,8 @@
                                 var num = parseInt(document.getElementById("number").value, 10);
                                 num = isNaN(num) ? 1 : num;
                                 num = num + 1;
+                                if (num > @ViewBag.status) num = num - 1;
+
                                 document.getElementById('number').value = num;
                             }
                             function Subtrac() {
@@ -108,7 +119,14 @@
                             <div class="le-quantity">
                                 <form>
                                     <a class="minus" href="#" onclick="Subtrac();"></a>
-                                    <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="1">
+                                    @if (ViewBag.status > 0)
+                                    {
+                                        <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="1">
+                                    }
+                                    else
+                                    {
+                                        <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="0">
+                                    }
                                     <a class="plus" href="#" onclick="Add();"></a>
                                 </form>
                             </div>
@@ -170,10 +188,18 @@
                 </div><!-- /.gallery-holder -->
                 <div class="no-margin col-xs-12 col-sm-7 body-holder">
                     <div class="body">
-
-                        <div class="availability">
-                            <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
-                        </div>
+                        @if (ViewBag.status > 0)
+                        {
+                            <div class="availability">
+                                <label>Tình trạng:</label> <span class="available"> Còn hàng </span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="availability">
+                                <label>Tình trạng:</label> <span class="not-available"> Hết hàng </span>
+                            </div>
+                        }
                         <div class="title"><a href="#">@Model.TenSP</a></div>
 
                         <div class="brand"></div>
@@ -202,12 +228,35 @@
                                 <div class="price-current"> @string.Format("{0:0,0}", Model.Gia)  VNĐ</div>
                             </div>
                         }
+                        <script>
+                            function Add() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                num = num + 1;
+                                if (num > @ViewBag.status) num = num - 1;
+
+                                document.getElementById('number').value = num;
+                            }
+                            function Subtrac() {
+                                var num = parseInt(document.getElementById("number").value, 10);
+                                num = isNaN(num) ? 1 : num;
+                                if (num > 1) num--;
+                                document.getElementById('number').value = num;
+                            }
+                        </script>
                         <div class="qnt-holder">
                             <div class="le-quantity">
                                 <form>
-                                    <a class="minus" href="javascript:;"></a>
-                                    <input name="quantity" class="sl" readonly="readonly" type="text" value="1">
-                                    <a class="plus" href="javascript:;"></a>
+                                    <a class="minus" href="#" onclick="Subtrac();"></a>
+                                    @if (ViewBag.status > 0)
+                                    {
+                                        <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="1">
+                                    }
+                                    else
+                                    {
+                                        <input name="quantity" id="number" class="sl" readonly="readonly" type="text" value="0">
+                                    }
+                                    <a class="plus" href="#" onclick="Add();"></a>
                                 </form>
                             </div>
                             <a id="addto-cart" href="#" class="le-button huge">Cho vào giỏ</a>
@@ -238,205 +287,7 @@
     <!-- ========================================= SAN PHAM LIEN QUAN ========================================= -->
     <!-- /#recently-reviewd -->
     <section id="recently-reviewd" class="wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-        <div class="container">
-            <div class="carousel-holder hover">
-
-                <div class="title-nav">
-                    <h2 class="h1">Sản Phẩm Liên Quan</h2>
-                    <div class="nav-holder">
-                        <a href="#prev" data-target="#owl-recently-viewed" class="slider-prev btn-prev fa fa-angle-left"></a>
-                        <a href="#next" data-target="#owl-recently-viewed" class="slider-next btn-next fa fa-angle-right"></a>
-                    </div>
-                </div><!-- /.title-nav -->
-                <div id="owl-recently-viewed" class="owl-carousel product-grid-holder owl-theme" style="opacity: 1; display: block;">
-                    <div class="owl-wrapper-outer">
-                        <div class="owl-wrapper" style="width: 2340px; left: 0px; display: block;">
-                            <div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="ribbon blue"><span>Mới nhập</span></div>
-                                        <div class="ribbon red"><span>Hot</span></div>
-                                        <div class="image">
-                                            <img alt="" src="/images/products/016131.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/01613">Điện thoại Oppo R7YGP (Vàng hồng)</a>
-                                            </div>
-                                            <div class="brand">OPPO</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-current text-right"> 9,400,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('01613',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div><div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="ribbon green"><span>Giảm</span></div>
-                                        <div class="image">
-                                            <img alt="" src="/images/products/021151.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/02115">Điện thoại Samsung G530 (Xám)</a>
-                                            </div>
-                                            <div class="brand">SamSung</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-prev">3,500,000  VNĐ</div>             <div class="price-current text-right"> 3,150,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('02115',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div><div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="ribbon blue"><span>Mới nhập</span></div>
-                                        <div class="image">
-                                            <img alt="" src="/images/products/148841.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/14884">Điện thoại Oppo A51WW (Trắng)</a>
-                                            </div>
-                                            <div class="brand">OPPO</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-current text-right"> 5,000,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('14884',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div><div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <img alt="" src="/images/products/236051.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/23605">Điện thoại Samsung SM-G318H (Đen)</a>
-                                            </div>
-                                            <div class="brand">SamSung</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-current text-right"> 1,700,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('23605',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div><div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="ribbon blue"><span>Mới nhập</span></div>
-                                        <div class="image">
-                                            <img alt="" src="/images/products/236411.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/23641">điện thoại 2</a>
-                                            </div>
-                                            <div class="brand">OPPO</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-current text-right"> 3,000,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('23641',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div><div class="owl-item" style="width: 195px;">
-                                <div class="no-margin carousel-item product-item-holder size-small hover">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <img alt="" src="/images/products/241731.jpg">
-                                        </div>
-                                        <div class="body">
-                                            <div class="label-discount clear"></div>
-
-                                            <div class="title">
-                                                <a href="/SanPham/Index/24173">Điện thoại Nokia 630 (Yellow)</a>
-                                            </div>
-                                            <div class="brand">Nokia</div>
-                                        </div>
-                                        <div class="prices">
-                                            <div class="price-current text-right"> 2,670,000  VNĐ</div>
-                                        </div>
-                                        <div class="hover-area">
-                                            <div class="add-cart-button">
-                                                <a href="javascript:;" class="le-button" onclick="Addcart('24173',1)">Cho vào giỏ</a>
-                                            </div>
-                                            <div class="wish-compare">
-                                                <a class="btn-add-to-wishlist" href="#">Yêu thích</a>
-                                                <a class="btn-add-to-compare" href="#">So sánh</a>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.product-item -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product-item-holder -->
-                </div><!-- /#recently-carousel -->
-            </div><!-- /.carousel-holder -->
-        </div><!-- /.container -->
+        @{ Html.RenderAction("productReative");}
     </section><!-- /#recently-reviewd -->;
     <!-- ========================================= RECENTLY VIEWED : END ========================================= -->
 </div>
@@ -463,4 +314,5 @@
         var element1 = document.getElementById("thongso");
         element1.classList.remove("active");
     })
+    document.title = 'Chi tiết sản phẩm'
 </script>

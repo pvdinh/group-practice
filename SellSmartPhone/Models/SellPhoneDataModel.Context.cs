@@ -108,5 +108,89 @@ namespace SellSmartPhone.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_product_discount_Result>("get_product_discount");
         }
+    
+        public virtual int add_comment(Nullable<int> maBL, Nullable<int> maSP, Nullable<int> maKH, string noidung, Nullable<System.DateTime> date, string hoten, string email)
+        {
+            var maBLParameter = maBL.HasValue ?
+                new ObjectParameter("MaBL", maBL) :
+                new ObjectParameter("MaBL", typeof(int));
+    
+            var maSPParameter = maSP.HasValue ?
+                new ObjectParameter("MaSP", maSP) :
+                new ObjectParameter("MaSP", typeof(int));
+    
+            var maKHParameter = maKH.HasValue ?
+                new ObjectParameter("MaKH", maKH) :
+                new ObjectParameter("MaKH", typeof(int));
+    
+            var noidungParameter = noidung != null ?
+                new ObjectParameter("Noidung", noidung) :
+                new ObjectParameter("Noidung", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var hotenParameter = hoten != null ?
+                new ObjectParameter("Hoten", hoten) :
+                new ObjectParameter("Hoten", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("add_comment", maBLParameter, maSPParameter, maKHParameter, noidungParameter, dateParameter, hotenParameter, emailParameter);
+        }
+    
+        public virtual ObjectResult<get_comment_Result> get_comment(Nullable<int> maSP)
+        {
+            var maSPParameter = maSP.HasValue ?
+                new ObjectParameter("MaSP", maSP) :
+                new ObjectParameter("MaSP", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_comment_Result>("get_comment", maSPParameter);
+        }
+    
+        public virtual int edit_password(Nullable<int> idaccount, string password)
+        {
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("edit_password", idaccountParameter, passwordParameter);
+        }
+    
+        public virtual int update_account(Nullable<int> idaccount, string email, string phone, string hoten, Nullable<System.DateTime> ngaysinh, string diachi)
+        {
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var hotenParameter = hoten != null ?
+                new ObjectParameter("Hoten", hoten) :
+                new ObjectParameter("Hoten", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_account", idaccountParameter, emailParameter, phoneParameter, hotenParameter, ngaysinhParameter, diachiParameter);
+        }
     }
 }

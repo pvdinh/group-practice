@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "EditInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <main id="authentication" class="inner-bottom-md">
+        <div class="container">
+            <div class="row">
+                <div id="StatupMessage">
+                </div>
+
+                <form action="/Account/EditInfo" method="post">
+                <div class="form-horizontal">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="Email">Email</label>
+                                <div class="col-md-5">
+                                    <input class="le-input" name="Email" type="text" value="@ViewBag.user.Email" required="true">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="DienThoai">Điện thoại liên lạc</label>
+                                <div class="col-md-5">
+                                    <input class="le-input" name="Phonenumber" type="text" value="@ViewBag.user.Phonenumber.Replace(" ",string.Empty)" required="true">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="HoTen">Họ tên</label>
+                                <div class="col-md-5">
+                                    <input class="le-input" name="Hoten" type="text" value="@ViewBag.user.Hoten" required="true">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="NgaySinh">Ngày sinh</label>
+                                <div class="col-md-3">
+                                    <input class="le-input text-box single-line"  name="Ngaysinh" type="date" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="DiaChi">Địa chỉ</label>
+                                <div class="col-md-8">
+                                    <input class="le-input" id="DiaChi" name="Address" type="text" value="@ViewBag.user.Address" required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Lưu lại" class="le-button huge">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @{Html.RenderAction("ImageUser"); }
+            </div>
+
+        </div>
+    </main>
