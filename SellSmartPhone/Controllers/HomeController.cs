@@ -16,6 +16,14 @@ namespace SellSmartPhone.Controllers
         // GET: home
         public ActionResult Index()
         {
+            DateTime expired = DateTime.Now;
+            List<Khuyenmai> listdatetime = db.Khuyenmais.Where(s => s.Ngayketthuc <= expired).ToList();
+            foreach(var item in listdatetime)
+            {
+                db.delete_expired(item.MaKM);
+                db.Khuyenmais.Remove(item);
+                db.SaveChanges();
+            }
             return View();
         }
         public ActionResult listproduct()
@@ -61,6 +69,12 @@ namespace SellSmartPhone.Controllers
             }
             return HttpNotFound();
         }
-
+        public ActionResult productrelate()
+        {
+            List<get_product_discount_Result> listproduct = new List<get_product_discount_Result>();
+            listproduct = db.get_product_discount().Where(s => s.LoaiSP == 1111).ToList();
+            listproduct = listproduct.OrderBy(s => Guid.NewGuid()).Take(6).ToList();
+            return PartialView("/Views/Product/_ViewproductRelate.cshtml", listproduct);
+        }
     }
 }
