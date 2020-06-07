@@ -192,5 +192,14 @@ namespace SellSmartPhone.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_account", idaccountParameter, emailParameter, phoneParameter, hotenParameter, ngaysinhParameter, diachiParameter);
         }
+    
+        public virtual int delete_expired(Nullable<int> maspkm)
+        {
+            var maspkmParameter = maspkm.HasValue ?
+                new ObjectParameter("Maspkm", maspkm) :
+                new ObjectParameter("Maspkm", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delete_expired", maspkmParameter);
+        }
     }
 }
