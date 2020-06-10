@@ -136,13 +136,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\navbarController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\searchAdvancedController.cs" />
     <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccLogin.cs" />
     <Compile Include="Models\Account.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
@@ -616,7 +619,6 @@
     <Content Include="template\assets\less\top-navbar.less" />
     <Content Include="template\assets\less\variables.less" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_Viewproduct.cshtml" />
     <Content Include="Views\Home\_Viewproduct more.cshtml" />
     <Content Include="Views\navbar\_Viewcategoryproduct.cshtml" />
     <Content Include="Views\navbar\_ViewcategoryproductWithBrand.cshtml" />
@@ -635,6 +637,8 @@
     <Content Include="Views\search\_Viewlastest.cshtml" />
     <Content Include="Views\Account\_ViewImageUser.cshtml" />
     <Content Include="Views\Product\_ViewcommentMore.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
