@@ -1,6 +1,6 @@
-﻿@model IEnumerable<SellSmartPhone.Models.get_comment_Result>
+﻿@model IEnumerable<SellSmartPhone.Models.get_comment_Result >
 <div class="tab-pane active" id="reviews">
-    <div class="comments" id="Comments">
+    <div class="comments" id="Comment">
         <span class="bold">Gồm @Model.Count() bình luận </span>
         <hr>
         @foreach (var item in Model)
@@ -32,7 +32,7 @@
                                     </div>
                                 </div><!-- /.meta-info -->
                                 <p class="comment-text">
-                                @item.Noidung
+                                    @item.Noidung
                                 </p><!-- /.comment-text -->
                             </div><!-- /.comment-body -->
                         </div><!-- /.col -->
@@ -68,7 +68,7 @@
                                     </div>
                                 </div><!-- /.meta-info -->
                                 <p class="comment-text">
-                                @item.Noidung
+                                    @item.Noidung
                                 </p><!-- /.comment-text -->
                             </div><!-- /.comment-body -->
                         </div><!-- /.col -->
@@ -79,65 +79,69 @@
             }
 
         }
-    </div><div id="nav">
-            <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li></ul></div>
-        </div>
+    </div>
+    <div class="loadmore-holder text-center">
+        <a class="btn-loadmore" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#Comment" href="/Product/commentMore">
+            <i class="fa fa-plus"></i>
+            Tải thêm
+        </a>
+</div>
 
 
-    </div><!-- /.comments -->
-    <div class="add-review row">
-        <div class="col-sm-8 col-xs-12">
-            <div class="new-review-form">
-                <h2>Viết bình luận</h2>
-                @if (Session["user"] == null)
-                {
-                    <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
-                        <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
-                            <div class="col-xs-12 col-sm-6">
-                                <input class="le-input text-box single-line" id="HoTen" name="HoTen" placeholder="Họ tên của bạn" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <input class="le-input text-box single-line" id="Email" name="Email" placeholder="Email của bạn" type="text" value="">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                            </div>
+</div><!-- /.comments -->
+<div class="add-review row">
+    <div class="col-sm-12 col-xs-12">
+        <div class="new-review-form">
+            <h2>Viết bình luận</h2>
+            @if (Session["user"] == null)
+            {
+                <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="le-input text-box single-line" id="HoTen" name="HoTen" placeholder="Họ tên của bạn" type="text" value="">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
                         </div>
-                        <!-- /.field-row -->
-                        <div class="field-row">
-                            <label>Sản phẩm này như thế nào?</label>
-                            <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
-                            <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
-                        </div><!-- /.field-row -->
-                        <div class="buttons-holder">
-                            <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
-                        </div><!-- /.buttons-holder -->
-                    </form>
-                }
-                else
-                {
-                    <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
-                        <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
-                            <div class="col-xs-12 col-sm-6">
-                                <input class="le-input text-box single-line" id="HoTen" name="HoTen" type="text" value="@ViewBag.user.Hoten">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <input class="le-input text-box single-line" id="Email" name="Email" type="text" value="@ViewBag.user.Email">
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                            </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="le-input text-box single-line" id="Email" name="Email" placeholder="Email của bạn" type="text" value="">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                         </div>
-                        <!-- /.field-row -->
-                        <div class="field-row">
-                            <label>Sản phẩm này như thế nào?</label>
-                            <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
-                            <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
-                        </div><!-- /.field-row -->
-                        <div class="buttons-holder">
-                            <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
-                        </div><!-- /.buttons-holder -->
-                    </form>
-                }
-            </div><!-- /.new-review-form -->
-        </div><!-- /.col -->
-    </div><!-- /.add-review -->
+                    </div>
+                    <!-- /.field-row -->
+                    <div class="field-row">
+                        <label>Sản phẩm này như thế nào?</label>
+                        <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
+                    </div><!-- /.field-row -->
+                    <div class="buttons-holder">
+                        <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
+                    </div><!-- /.buttons-holder -->
+                </form>
+            }
+            else
+            {
+                <form action="/Product/addcomment" class="contact-form" data-ajax="true" data-ajax-mode="replace" data-ajax-success="test" data-ajax-update="#description" id="contact-form" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="deuBDaa-JdhiePpBiXz34PaYrUFLBPxkW7Wr4fUt723ZY7HS4YEkZJgT6asOBQ0TxLrtQXN7N9wwM5Qi5qE0Ta8tZYcqnIjFLF1CZtBgw7Y1"><input htmlattributes="{ class = le-input }" id="MaSP" name="MaSP" type="hidden" value="01613">    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="le-input text-box single-line" id="HoTen" name="HoTen" type="text" value="@ViewBag.user.Hoten">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input class="le-input text-box single-line" id="Email" name="Email" type="text" value="@ViewBag.user.Email">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <!-- /.field-row -->
+                    <div class="field-row">
+                        <label>Sản phẩm này như thế nào?</label>
+                        <textarea class="le-input" cols="20" id="NoiDung" name="NoiDung" rows="8" required="true"></textarea>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
+                    </div><!-- /.field-row -->
+                    <div class="buttons-holder">
+                        <button type="submit" class="le-button huge" formmethod="post">Gửi</button>
+                    </div><!-- /.buttons-holder -->
+                </form>
+            }
+        </div><!-- /.new-review-form -->
+    </div><!-- /.col -->
+</div><!-- /.add-review -->
 </div>
