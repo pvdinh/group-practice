@@ -34,6 +34,7 @@ namespace SellSmartPhone.Models
         public string Anh { get; set; }
         public Nullable<int> Isnew { get; set; }
         public Nullable<int> Ishot { get; set; }
+        public Nullable<int> SoLuong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Binhluan> Binhluans { get; set; }

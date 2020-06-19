@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SellSmartPhone.Models.get_product_discount_Result>
+@foreach (var item in Model)
+{
+    if (item.LoaiSP == 1111)
+    {
+        <ul class="product-list">
+            <li class="sidebar-product-list-item">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 no-margin">
+                        <a href="/product/index/@item.MaSP" class="thumb-holder">
+                            <img alt="@item.TenSP" src="/image/smartphone/@item.tenhang.Replace(" ",string.Empty).ToLower()/@item.Anh">
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 no-margin">
+                        <a href="/product/index/@item.MaSP">@item.TenSP</a>
+                        @if (item.Giamgia != null)
+                        {
+                            <div class="price">
+                                <div class="price-prev">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                                <div class="price-current">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price">
+                                <div class="price-current">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </li><!-- /.sidebar-product-list-item -->
+        </ul>
+    }
+    else
+    {
+        <ul class="product-list">
+            <li class="sidebar-product-list-item">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 no-margin">
+                        <a href="/product/index/@item.MaSP" class="thumb-holder">
+                            <img alt="@item.TenSP" src="~/image/@item.TenLoai/@item.Anh">
+                        </a>
+                    </div>
+                    <a href="/product/index/@item.MaSP">@item.TenSP</a>
+                    @if (item.Giamgia != null)
+                    {
+                        <div class="price">
+                            <div class="price-prev">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                            <div class="price-current">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="price">
+                            <div class="price-current">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                        </div>
+                    }
+                </div>
+            </li><!-- /.sidebar-product-list-item -->
+        </ul>
+    }
+
+}
+
