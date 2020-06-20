@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main id="authentication" class="inner-bottom-md">
+    <div class="container">
+        <div class="row" style="border-color:cadetblue;border-style:double;border-radius:20px">
+
+            <div>
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] ">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6">
+                <section class="section sign-in inner-right-xs">
+                    <h2 class="bordered">Sign Up</h2>
+                    <form method="post" role="form" class="login-form cf-style-1">
+                        <div class="field-row">
+                            <span>Email</span>
+                            <input type="text" name="EmailLogin" required="" class="le-input">
+                        </div><!-- /.field-row -->
+                        <div>
+                            <div class="field-row pull-left" style="width:47%">
+                                <span class="">FullName</span>
+                                <input type="text" name="name" required="" class="le-input">
+                            </div>
+
+                            <div class="field-row pull-right" style="width:47%">
+                                <span class="">UserName</span>
+                                <input type="text" name="username" required="" class="le-input">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="field-row pull-left" style="width:47%">
+                                <span class="">PassWord</span>
+                                <input type="password" name="Password" required="" class="le-input">
+                            </div><!-- /.field-row -->
+
+                            <div class="field-row pull-right" style="width:47%">
+                                <span class="">Confirm</span>
+                                <input type="password" name="RePassWord" required="" class="le-input">
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="field-row pull-left" style="width:47%">
+                                <span class="">Phone</span>
+                                <input type="text" name="phone" required="" class="le-input">
+                            </div>
+                            <div class="field-row pull-right" style="width:47%">
+                                <span class="">Address</span>
+                                <input type="text" name="address" required="" class="le-input">
+                            </div>
+                        </div>
+                        <div class="field-row" style="width:50%">
+                            <span class="">Date of Birth</span>
+                            <input type="date" name="DateOfBirth" required="" class="le-input">
+                        </div>
+
+
+
+                        <div class="buttons-holder">
+                            <button type="submit" class="le-button huge">Sign Up</button>
+                        </div><!-- /.buttons-holder -->
+                    </form><!-- /.cf-style-1 -->
+
+                </section><!-- /.sign-in -->
+            </div><!-- /.col -->
+
+            <div class="col-md-6">
+                <section class="section register inner-left-xs">
+                    <h2 class="bordered">Create New Account</h2>
+                    <p>Create your own Media Center account</p>
+
+                    <form role="form" class="@*register-form cf-style-1*@">
+                        <div class="field-row">
+                            <label>If you do not have an account</label>
+                        </div><!-- /.field-row -->
+
+                        <div class="field-row">
+                            <a href='@Url.Action("Index", "Login")'>
+                                <input class="le-button huge" type='button' value='Login' style="width:50%" />
+                            </a>
+                        </div><!-- /.buttons-holder -->
+                    </form>
+
+                    <h2 class="semi-bold">Sign up today and you'll be able to :</h2>
+
+                    <ul class="list-unstyled list-benefits">
+                        <li><i class="fa fa-check primary-color"></i> Speed your way through the checkout</li>
+                        <li><i class="fa fa-check primary-color"></i> Track your orders easily</li>
+                        <li><i class="fa fa-check primary-color"></i> Keep a record of all your purchases</li>
+                    </ul>
+
+                </section><!-- /.register -->
+
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</main><!-- /.authentication -->

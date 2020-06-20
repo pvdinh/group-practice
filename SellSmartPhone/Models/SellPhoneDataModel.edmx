@@ -338,6 +338,9 @@
           <Parameter Name="Thuoctinh" Type="nvarchar" Mode="In" />
           <Parameter Name="Giatri" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="delete_expired" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Maspkm" Type="int" Mode="In" />
+        </Function>
         <Function Name="edit_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idaccount" Type="int" Mode="In" />
           <Parameter Name="password" Type="nchar" Mode="In" />
@@ -868,6 +871,9 @@
             <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
             <Parameter Name="diachi" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="delete_expired">
+            <Parameter Name="Maspkm" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="get_product_discount_Result">
           <Property Type="Int32" Name="MaSP" Nullable="false" />
@@ -1096,6 +1102,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="edit_password" FunctionName="SellphonesModel.Store.edit_password" />
           <FunctionImportMapping FunctionImportName="update_account" FunctionName="SellphonesModel.Store.update_account" />
+          <FunctionImportMapping FunctionImportName="delete_expired" FunctionName="SellphonesModel.Store.delete_expired" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
