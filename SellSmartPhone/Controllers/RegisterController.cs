@@ -45,8 +45,8 @@ namespace SellSmartPhone.Controllers
                 {
                     try
                     {
-                        var IDMax = db.Accounts.OrderByDescending(s => s.IDAccount).Take(1).FirstOrDefault();
-                        ACC.IDAccount = IDMax.IDAccount +1;
+                        var IDMax = db.Database.SqlQuery<Account>("SELECT MAX(IDAccount) FROM dbo.Account").ToString();
+                        ACC.IDAccount = Int32.Parse(IDMax) +1;
                         ACC.Password = Input.Password;
                         ACC.Phonenumber = Input.phone;
                         ACC.Ngaysinh = Input.DateOfBirth;
@@ -54,7 +54,7 @@ namespace SellSmartPhone.Controllers
                         ACC.Address = Input.address;
                         db.Accounts.Add(ACC);
                         db.SaveChanges();
-                        return RedirectToAction("Index", "home");
+                        return RedirectToAction("Index", "Shop");
                     }
                     catch (DbEntityValidationException e)
                     {
