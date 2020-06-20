@@ -75,7 +75,7 @@ namespace SellSmartPhone.Controllers
                 {
                     login.avatar = "/image/System/avtEmpty.jpg";
                 }
-                Session["Customer"] = login;
+                Session["idaccount"] = login.id;
 
                 setAlert("dang nhap thanh cong", "success");
                 return RedirectToAction("Index","Home");
@@ -97,7 +97,7 @@ namespace SellSmartPhone.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return RedirectToAction("Index", "Shop");
+            return RedirectToAction("Index", "home");
         }
     }
 }
