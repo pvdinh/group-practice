@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SellSmartPhone.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace SellSmartPhone.Controllers
 {
@@ -45,10 +47,18 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult comment()
         {
+            Session["countcmt"] = 6;
             ViewBag.user = Session["user"];
             int id = int.Parse(Session["id"].ToString());
-            List<get_comment_Result> listcomment = db.get_comment(id).ToList();
+            List<get_comment_Result> listcomment = db.get_comment(id).Take(4).ToList();
             return PartialView("_Viewcomment",listcomment);
+        }
+        public ActionResult commentMore()
+        {
+            ViewBag.user = Session["user"];
+            int id = int.Parse(Session["id"].ToString());
+            List<get_comment_Result> listcomment = db.get_comment(id).Take(int.Parse(Session["countcmt"].ToString())).ToList();
+            return PartialView("_ViewcommentMore", listcomment);
         }
         public ActionResult productReative()
         {
