@@ -1,5 +1,28 @@
 ﻿
 @model IEnumerable<SellSmartPhone.Models.get_product_discount_Result>
+
+    <script type="text/javascript">
+        function AddToCart(item) {
+            var idItem = $(item).attr("idItem");
+            var formData = new FormData();
+            formData.append("idItem", idItem);
+
+            $ajax({
+                async: true,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: formData,
+                url: "/Cart/Index",
+                success: function (data) {
+
+                },
+                error: function () {
+                    alert("Có vấn đề");
+                }
+            });
+    </script>
+
 <div class="product-grid-holder">
     <div id="spnoibat">
         @foreach (var item in Model)
@@ -45,7 +68,7 @@
                         }
                         <div class="hover-area">
                             <div class="add-cart-button">
-                                <a href="/Cart/AddCart?productId=@item.MaSP&quantity=1" class="le-button">Cho vào giỏ</a>
+                                <a href="/Cart/Index?idSP=@item.MaSP" class="le-button">Cho vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +115,7 @@
                         }
                         <div class="hover-area">
                             <div class="add-cart-button">
-                                <a href="/Cart/AddCart?productId=@item.MaSP&quantity=1" class="le-button">Cho vào giỏ</a>
+                                <a href="/Cart/Index?idSP=@item.MaSP" class="le-button">Cho vào giỏ</a>
                             </div>
                         </div>
                     </div>

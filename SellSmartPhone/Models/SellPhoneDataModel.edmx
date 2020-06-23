@@ -156,7 +156,7 @@
           <Property Name="Thuoctinh" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Giatri" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <Association Name="FK__BaoHanh__MaSp__2D27B809">
+        <Association Name="FK__BaoHanh__MaSp__286302EC">
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="0..1" />
           <End Role="BaoHanh" Type="Self.BaoHanh" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Binhluan__MaKH__239E4DCF">
+        <Association Name="FK__Binhluan__MaKH__29572725">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Binhluan" Type="Self.Binhluan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Binhluan__MaSP__22AA2996">
+        <Association Name="FK__Binhluan__MaSP__2A4B4B5E">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Binhluan" Type="Self.Binhluan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChitietDH__MaDH__29572725">
+        <Association Name="FK__ChitietDH__MaDH__2B3F6F97">
           <End Role="DonhangKH" Type="Self.DonhangKH" Multiplicity="0..1" />
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +204,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChitietDH__MaSP__2A4B4B5E">
+        <Association Name="FK__ChitietDH__MaSP__2C3393D0">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="0..1" />
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +216,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonhangKH__MaKH__267ABA7A">
+        <Association Name="FK__DonhangKH__MaKH__2D27B809">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="DonhangKH" Type="Self.DonhangKH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hopdong__IDNhacu__32E0915F">
+        <Association Name="FK__Hopdong__IDNhacu__2E1BDC42">
           <End Role="Nhacungcap" Type="Self.Nhacungcap" Multiplicity="1" />
           <End Role="Hopdong" Type="Self.Hopdong" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +240,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hopdong__IDSP__31EC6D26">
+        <Association Name="FK__Hopdong__IDSP__2F10007B">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Hopdong" Type="Self.Hopdong" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +252,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sanpham__HangSX__15502E78">
+        <Association Name="FK__Sanpham__HangSX__300424B4">
           <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +264,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sanpham__LoaiSP__145C0A3F">
+        <Association Name="FK__Sanpham__LoaiSP__30F848ED">
           <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="1" />
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +276,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPkhuyenm__MaSPK__1CF15040">
+        <Association Name="FK__SPkhuyenm__MaSPK__31EC6D26">
           <End Role="Khuyenmai" Type="Self.Khuyenmai" Multiplicity="1" />
           <End Role="SPkhuyenmai" Type="Self.SPkhuyenmai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +288,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPkhuyenma__MaSP__1DE57479">
+        <Association Name="FK__SPkhuyenma__MaSP__32E0915F">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="SPkhuyenmai" Type="Self.SPkhuyenmai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +300,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Thongsokyt__MaSP__182C9B23">
+        <Association Name="FK__Thongsokyt__MaSP__33D4B598">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Thongsokythuat" Type="Self.Thongsokythuat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -312,15 +312,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="add_comment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MaBL" Type="int" Mode="In" />
-          <Parameter Name="MaSP" Type="int" Mode="In" />
-          <Parameter Name="MaKH" Type="int" Mode="In" />
-          <Parameter Name="Noidung" Type="nvarchar" Mode="In" />
-          <Parameter Name="date" Type="datetime" Mode="In" />
-          <Parameter Name="Hoten" Type="nvarchar" Mode="In" />
-          <Parameter Name="Email" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="addproduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaSP" Type="int" Mode="In" />
           <Parameter Name="TenSP" Type="nvarchar" Mode="In" />
@@ -338,21 +329,9 @@
           <Parameter Name="Thuoctinh" Type="nvarchar" Mode="In" />
           <Parameter Name="Giatri" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="edit_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idaccount" Type="int" Mode="In" />
-          <Parameter Name="password" Type="nchar" Mode="In" />
-        </Function>
-        <Function Name="get_comment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MaSP" Type="int" Mode="In" />
-        </Function>
         <Function Name="get_product_discount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="update_account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idaccount" Type="int" Mode="In" />
-          <Parameter Name="Email" Type="nchar" Mode="In" />
-          <Parameter Name="phone" Type="char" Mode="In" />
-          <Parameter Name="Hoten" Type="nvarchar" Mode="In" />
-          <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
-          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+        <Function Name="Load_Cart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idKH" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="SellphonesModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
@@ -369,55 +348,55 @@
           <EntitySet Name="SPkhuyenmai" EntityType="Self.SPkhuyenmai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Thongsokythuat" EntityType="Self.Thongsokythuat" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BaoHanh__MaSp__2D27B809" Association="Self.FK__BaoHanh__MaSp__2D27B809">
+          <AssociationSet Name="FK__BaoHanh__MaSp__286302EC" Association="Self.FK__BaoHanh__MaSp__286302EC">
             <End Role="ChitietDH" EntitySet="ChitietDH" />
             <End Role="BaoHanh" EntitySet="BaoHanh" />
           </AssociationSet>
-          <AssociationSet Name="FK__Binhluan__MaKH__239E4DCF" Association="Self.FK__Binhluan__MaKH__239E4DCF">
+          <AssociationSet Name="FK__Binhluan__MaKH__29572725" Association="Self.FK__Binhluan__MaKH__29572725">
             <End Role="Account" EntitySet="Account" />
             <End Role="Binhluan" EntitySet="Binhluan" />
           </AssociationSet>
-          <AssociationSet Name="FK__Binhluan__MaSP__22AA2996" Association="Self.FK__Binhluan__MaSP__22AA2996">
+          <AssociationSet Name="FK__Binhluan__MaSP__2A4B4B5E" Association="Self.FK__Binhluan__MaSP__2A4B4B5E">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Binhluan" EntitySet="Binhluan" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChitietDH__MaDH__29572725" Association="Self.FK__ChitietDH__MaDH__29572725">
+          <AssociationSet Name="FK__ChitietDH__MaDH__2B3F6F97" Association="Self.FK__ChitietDH__MaDH__2B3F6F97">
             <End Role="DonhangKH" EntitySet="DonhangKH" />
             <End Role="ChitietDH" EntitySet="ChitietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChitietDH__MaSP__2A4B4B5E" Association="Self.FK__ChitietDH__MaSP__2A4B4B5E">
+          <AssociationSet Name="FK__ChitietDH__MaSP__2C3393D0" Association="Self.FK__ChitietDH__MaSP__2C3393D0">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="ChitietDH" EntitySet="ChitietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonhangKH__MaKH__267ABA7A" Association="Self.FK__DonhangKH__MaKH__267ABA7A">
+          <AssociationSet Name="FK__DonhangKH__MaKH__2D27B809" Association="Self.FK__DonhangKH__MaKH__2D27B809">
             <End Role="Account" EntitySet="Account" />
             <End Role="DonhangKH" EntitySet="DonhangKH" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hopdong__IDNhacu__32E0915F" Association="Self.FK__Hopdong__IDNhacu__32E0915F">
+          <AssociationSet Name="FK__Hopdong__IDNhacu__2E1BDC42" Association="Self.FK__Hopdong__IDNhacu__2E1BDC42">
             <End Role="Nhacungcap" EntitySet="Nhacungcap" />
             <End Role="Hopdong" EntitySet="Hopdong" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hopdong__IDSP__31EC6D26" Association="Self.FK__Hopdong__IDSP__31EC6D26">
+          <AssociationSet Name="FK__Hopdong__IDSP__2F10007B" Association="Self.FK__Hopdong__IDSP__2F10007B">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Hopdong" EntitySet="Hopdong" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sanpham__HangSX__15502E78" Association="Self.FK__Sanpham__HangSX__15502E78">
+          <AssociationSet Name="FK__Sanpham__HangSX__300424B4" Association="Self.FK__Sanpham__HangSX__300424B4">
             <End Role="HangSX" EntitySet="HangSX" />
             <End Role="Sanpham" EntitySet="Sanpham" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sanpham__LoaiSP__145C0A3F" Association="Self.FK__Sanpham__LoaiSP__145C0A3F">
+          <AssociationSet Name="FK__Sanpham__LoaiSP__30F848ED" Association="Self.FK__Sanpham__LoaiSP__30F848ED">
             <End Role="LoaiSP" EntitySet="LoaiSP" />
             <End Role="Sanpham" EntitySet="Sanpham" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPkhuyenm__MaSPK__1CF15040" Association="Self.FK__SPkhuyenm__MaSPK__1CF15040">
+          <AssociationSet Name="FK__SPkhuyenm__MaSPK__31EC6D26" Association="Self.FK__SPkhuyenm__MaSPK__31EC6D26">
             <End Role="Khuyenmai" EntitySet="Khuyenmai" />
             <End Role="SPkhuyenmai" EntitySet="SPkhuyenmai" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPkhuyenma__MaSP__1DE57479" Association="Self.FK__SPkhuyenma__MaSP__1DE57479">
+          <AssociationSet Name="FK__SPkhuyenma__MaSP__32E0915F" Association="Self.FK__SPkhuyenma__MaSP__32E0915F">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="SPkhuyenmai" EntitySet="SPkhuyenmai" />
           </AssociationSet>
-          <AssociationSet Name="FK__Thongsokyt__MaSP__182C9B23" Association="Self.FK__Thongsokyt__MaSP__182C9B23">
+          <AssociationSet Name="FK__Thongsokyt__MaSP__33D4B598" Association="Self.FK__Thongsokyt__MaSP__33D4B598">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Thongsokythuat" EntitySet="Thongsokythuat" />
           </AssociationSet>
@@ -868,6 +847,9 @@
             <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
             <Parameter Name="diachi" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Load_Cart" ReturnType="Collection(SellphonesModel.Load_Cart_Result)">
+            <Parameter Name="idKH" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="get_product_discount_Result">
           <Property Type="Int32" Name="MaSP" Nullable="false" />
@@ -891,6 +873,23 @@
           <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Avatar" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Load_Cart_Result">
+          <Property Type="Int32" Name="IDAccount" Nullable="false" />
+          <Property Type="Int32" Name="MaDH" Nullable="false" />
+          <Property Type="Int32" Name="Soluong" Nullable="true" />
+          <Property Type="Int32" Name="MaSP" Nullable="false" />
+          <Property Type="String" Name="TenSP" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="LoaiSP" Nullable="false" />
+          <Property Type="String" Name="TenLoai" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="HangSX" Nullable="false" />
+          <Property Type="String" Name="Anh" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Isnew" Nullable="true" />
+          <Property Type="Int32" Name="Ishot" Nullable="true" />
+          <Property Type="String" Name="tenhang" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Gia" Nullable="false" />
+          <Property Type="Int32" Name="Giamgia" Nullable="true" />
+          <Property Type="Double" Name="giá_mới" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1080,23 +1079,28 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="add_comment" FunctionName="SellphonesModel.Store.add_comment" />
-          <FunctionImportMapping FunctionImportName="get_comment" FunctionName="SellphonesModel.Store.get_comment">
+          <FunctionImportMapping FunctionImportName="Load_Cart" FunctionName="SellphonesModel.Store.Load_Cart">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="SellphonesModel.get_comment_Result">
+              <ComplexTypeMapping TypeName="SellphonesModel.Load_Cart_Result">
+                <ScalarProperty Name="IDAccount" ColumnName="IDAccount" />
+                <ScalarProperty Name="MaDH" ColumnName="MaDH" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="Noidung" ColumnName="Noidung" />
-                <ScalarProperty Name="Ngaydang" ColumnName="Ngaydang" />
-                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="LoaiSP" ColumnName="LoaiSP" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Isnew" ColumnName="Isnew" />
+                <ScalarProperty Name="Ishot" ColumnName="Ishot" />
+                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Giamgia" ColumnName="Giamgia" />
+                <ScalarProperty Name="giá_mới" ColumnName="giá mới" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="edit_password" FunctionName="SellphonesModel.Store.edit_password" />
-          <FunctionImportMapping FunctionImportName="update_account" FunctionName="SellphonesModel.Store.update_account" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

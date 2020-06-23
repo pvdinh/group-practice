@@ -1,50 +1,26 @@
-﻿@model List<SellSmartPhone.Models.HandleCart.CartItem>
+﻿@model SellSmartPhone.Models.HandleCart.Cart
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <section id="cart-page">
     <div class="container">
-        <!-- ========================================= CONTENT ========================================= -->
         <div class="col-xs-12 col-md-9 items-holder no-margin">
-            @foreach (var item in Model)
+            <!-- ========================================= CONTENT ========================================= -->
+            @if (ViewBag.countCart != null && ViewBag.countCart > 0)
+            {
+
+                Html.RenderAction("Cart");
+
+            }
+            else
             {
                 <div class="row no-margin cart-item">
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <a href="#" class="thumb-holder">
-                            <img class="lazy" alt="" src="@item.sanPham.Anh">
-                        </a>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-5 ">
-                        <div class="title">
-                            <a href="#">@item.sanPham.TenSP</a>
-                        </div>
-                        <div class="brand">@item.sanPham.HangSX</div>
-                    </div>
+                    <p>Giỏ hàng hiện đang trống!</p>
 
-                    <div class="col-xs-12 col-sm-3 no-margin">
-                        <div class="quantity">
-                            <div class="le-quantity">
-                                <form>
-                                    <a class="minus" href="#reduce"></a>
-                                    <input name="quantity" readonly="readonly" type="text" value="@item.soLuong">
-                                    <a class="plus" href="#add"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <div class="price" style="padding-right:15px;">
-                            @item.sanPham.Gia
-                        </div>
-                        <a class="close-btn" href="#"></a>
-                    </div>
-                </div><!-- /.cart-item -->
+                </div>
             }
         </div>
         <!-- ========================================= CONTENT : END ========================================= -->
@@ -57,21 +33,35 @@
                     <ul class="tabled-data no-border inverse-bold">
                         <li>
                             <label>Tổng tiền sản phẩm :</label>
-                            <div class="value pull-right">$8434.00</div>
+                            @if (@Model.Giamgia != null)
+                            {
+                                <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                            }
+                            else
+                            {
+                                <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.Gia)</div>
+                            }
                         </li>
                         <li>
                             <label>Tổng số lượng :</label>
-                            <div class="value pull-right">9999</div>
+                            <div class="value pull-right">@Model.Soluong</div>
                         </li>
                         <li>
                             <label>Phí vận chuyển :</label>
-                            <div class="value pull-right">free shipping</div>
+                            <div class="value pull-right">Miễn phí</div>
                         </li>
                     </ul>
                     <ul id="total-price" class="tabled-data inverse-bold no-border">
                         <li>
                             <label>Tổng tiền :</label>
-                            <div class="value pull-right">$8434.00</div>
+                            @if (@Model.Giamgia != null)
+                            {
+                                <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                            }
+                            else
+                            {
+                                <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.Gia)</div>
+                            }
                         </li>
                     </ul>
                     <div class="buttons-holder">
@@ -86,7 +76,7 @@
                 <div class="body">
                     <form>
                         <div class="inline-input">
-                            <input data-placeholder="enter coupon code" type="text" />
+                            <input data-placeholder="enter coupon code" type="text" class="placeholder" />
                             <button class="le-button" type="submit">Áp dụng</button>
                         </div>
                     </form>
@@ -94,8 +84,12 @@
             </div><!-- /.widget -->
         </div><!-- /.sidebar -->
         <!-- ========================================= SIDEBAR : END ========================================= -->
+
     </div>
-</section><!-- /.wrapper -->
+</section>
+
+
+
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
 <script async="" src="https://t.sharethis.com/1/d/t.dhj?rnd=1589034575287&amp;cid=c010&amp;dmn=localhost" id="pxscrpt"></script>
 <script type="text/javascript" id="async-buttons" src="https://ws.sharethis.com/button/async-buttons.js"></script>
@@ -137,5 +131,3 @@
 
 
 <iframe src="https://c.sharethis.mgr.consensu.org/portal-v2.html" id="st_gdpr_iframe" title="GDPR Consent Management" style="width: 0px; height: 0px; position: absolute; left: -5000px;"></iframe><div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">ShareThis Copy and Paste</div><iframe id="nr-ext-rsicon" style="position: absolute; display: none; width: 50px; height: 50px; z-index: 2147483647; border-style: none; background: transparent;" __idm_frm__="261"></iframe><div id="eJOY__extension_root" style="all: unset;"></div><div id="stwrapper" class="stwrapper stwrapper4x" style="display: none;"><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" src="https://ws.sharethis.com/secure/index.html"></iframe></div><div id="stOverlay" onclick="javascript:stWidget.closeWidget();"></div>
-
-

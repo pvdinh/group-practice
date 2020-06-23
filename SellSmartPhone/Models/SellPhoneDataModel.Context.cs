@@ -192,5 +192,14 @@ namespace SellSmartPhone.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_account", idaccountParameter, emailParameter, phoneParameter, hotenParameter, ngaysinhParameter, diachiParameter);
         }
+    
+        public virtual ObjectResult<Load_Cart_Result> Load_Cart(Nullable<int> idKH)
+        {
+            var idKHParameter = idKH.HasValue ?
+                new ObjectParameter("idKH", idKH) :
+                new ObjectParameter("idKH", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Load_Cart_Result>("Load_Cart", idKHParameter);
+        }
     }
 }
