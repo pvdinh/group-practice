@@ -1,6 +1,6 @@
 ﻿@model List<SellSmartPhone.Models.HandleCart.Cart>
 
-
+@{ double? total = 0;}
 @foreach (var item in Model)
 {
     <div class="row no-margin cart-item">
@@ -46,6 +46,7 @@
                 </div>
                 <a class="close-btn" href="/Cart/DeleteCart?MaSP=@item.MaSP" onclick="return confirm('Bạn có muốn xoá sản phẩm này khỏi giỏ hàng?')"></a>
             </div>
+            total += item.giá_mới * item.Soluong;
         }
         else
         {
@@ -55,9 +56,54 @@
                 </div>
                 <a class="close-btn" href="/Cart/DeleteCart?MaSP=@item.MaSP" onclick="return confirm('Bạn có muốn xoá sản phẩm này khỏi giỏ hàng?')"></a>
             </div>
+            total += item.Gia * item.Soluong;
         }
 
     </div>
 
 }
 
+<div class="col-xs-12 col-md-3 no-margin sidebar ">
+    <div class="widget cart-summary">
+        <h1 class="border">Giỏ hàng</h1>
+        <div class="body">
+            <ul class="tabled-data no-border inverse-bold">
+                <li>
+                    <label>Tổng tiền sản phẩm :</label>
+                        <div class="value pull-right">@string.Format("{0:0,0}", total)</div>
+                </li>
+                <li>
+                    <label>Tổng số lượng :</label>
+                    <div class="value pull-right">ViewBag.countCart</div>
+                </li>
+                <li>
+                    <label>Phí vận chuyển :</label>
+                    <div class="value pull-right">Miễn phí</div>
+                </li>
+            </ul>
+            <ul id="total-price" class="tabled-data inverse-bold no-border">
+                <li>
+                    <label>Tổng tiền :</label>
+                        <div class="value pull-right">@string.Format("{0:0,0}", total)</div>
+                </li>
+            </ul>
+            <div class="buttons-holder">
+                <a class="le-button big" href="@Url.Action("Checkout", "Cart")">Chấp thuận</a>
+                <a class="simple-link block" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>
+            </div>
+        </div>
+    </div><!-- /.widget -->
+
+    <div id="cupon-widget" class="widget">
+        <h1 class="border">Mã khuyến mãi</h1>
+        <div class="body">
+            <form>
+                <div class="inline-input">
+                    <input data-placeholder="enter coupon code" type="text" class="placeholder" />
+                    <button class="le-button" type="submit">Áp dụng</button>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.widget -->
+</div><!-- /.sidebar -->
+<!-- ========================================= SIDEBAR : END ========================================= -->
