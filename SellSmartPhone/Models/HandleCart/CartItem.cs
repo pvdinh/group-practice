@@ -38,15 +38,7 @@ namespace SellSmartPhone.Models.HandleCart
 
         public List<Cart> ListCart { get; set; }
 
-        //public double Tinhtongtiensanpham()
-        //{
-        //    double count = 0;
-        //    foreach (var temp in ListCart)
-        //    {
-        //        count += temp.thanhTien;
-        //    }
-        //    return count;
-        //}
+        
         //public void TinhtongtienCart()
         //{
         //    if (Giamgia != null)
