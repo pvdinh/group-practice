@@ -1,0 +1,61 @@
+﻿@model SellSmartPhone.Models.HandleCart.Cart
+<!-- ========================================= SIDEBAR ========================================= -->
+
+<div class="col-xs-12 col-md-3 no-margin sidebar ">
+    <div class="widget cart-summary">
+        <h1 class="border">Giỏ hàng</h1>
+        <div class="body">
+            <ul class="tabled-data no-border inverse-bold">
+                <li>
+                    <label>Tổng tiền sản phẩm :</label>
+                    @if (@Model.Giamgia != null)
+                    {
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                    }
+                    else
+                    {
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.Gia)</div>
+                    }
+                </li>
+                <li>
+                    <label>Tổng số lượng :</label>
+                    <div class="value pull-right">@Model.Soluong</div>
+                </li>
+                <li>
+                    <label>Phí vận chuyển :</label>
+                    <div class="value pull-right">Miễn phí</div>
+                </li>
+            </ul>
+            <ul id="total-price" class="tabled-data inverse-bold no-border">
+                <li>
+                    <label>Tổng tiền :</label>
+                    @if (@Model.Giamgia != null)
+                    {
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                    }
+                    else
+                    {
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.Gia)</div>
+                    }
+                </li>
+            </ul>
+            <div class="buttons-holder">
+                <a class="le-button big" href="@Url.Action("Checkout", "Cart")">Chấp thuận</a>
+                <a class="simple-link block" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>
+            </div>
+        </div>
+    </div><!-- /.widget -->
+
+    <div id="cupon-widget" class="widget">
+        <h1 class="border">Mã khuyến mãi</h1>
+        <div class="body">
+            <form>
+                <div class="inline-input">
+                    <input data-placeholder="enter coupon code" type="text" class="placeholder" />
+                    <button class="le-button" type="submit">Áp dụng</button>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.widget -->
+</div><!-- /.sidebar -->
+<!-- ========================================= SIDEBAR : END ========================================= -->

@@ -283,8 +283,9 @@
     <Compile Include="Models\get_product_discount_Result.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HandleCart\AllCart.cs" />
     <Compile Include="Models\HandleCart\CartItem.cs" />
+    <Compile Include="Models\HandleCart\CartMethods.cs" />
+    <Compile Include="Models\HandleCart\ShoppingCart.cs" />
     <Compile Include="Models\HangSX.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
@@ -292,6 +293,9 @@
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Khuyenmai.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Load_Cart_Result.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiSP.cs">
@@ -859,6 +863,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_AddCart.cshtml" />
+    <Content Include="Views\Shared\AddCart1.cshtml" />
+    <Content Include="Views\Cart\_Cart.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Product\_ViewcommentMore.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
