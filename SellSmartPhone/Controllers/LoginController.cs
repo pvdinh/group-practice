@@ -75,10 +75,22 @@ namespace SellSmartPhone.Controllers
                 {
                     login.avatar = "/image/System/avtEmpty.jpg";
                 }
-                Session["idaccount"] = login.id;
+                if (temp.Type =="customer")
+                {
+                    Session["idaccount"] = login.id;
 
-                setAlert("dang nhap thanh cong", "success");
-                return RedirectToAction("Index","Home");
+                    setAlert("dang nhap thanh cong", "success");
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    setAlert("dang nhap thanh cong", "success");
+                    return RedirectToAction("Index","ADMIN/Manager");
+                }
+                //Session["idaccount"] = login.id;
+
+                //setAlert("dang nhap thanh cong", "success");
+                //return RedirectToAction("Index","Home");
             }
             else if (checkAcc == -1)
             {
