@@ -259,6 +259,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ADMIN\ADMINAreaRegistration.cs" />
     <Compile Include="Areas\ADMIN\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\nhacungcapController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3396,6 +3397,7 @@
     <Content Include="Areas\ADMIN\assets\vendor\nucleo\fonts\nucleo-icons.woff2" />
     <Content Include="Areas\ADMIN\assets\vendor\prismjs\components.json" />
     <Content Include="Areas\ADMIN\Views\Manager\Index.cshtml" />
+    <Content Include="Areas\ADMIN\Views\nhacungcap\ListNcc.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

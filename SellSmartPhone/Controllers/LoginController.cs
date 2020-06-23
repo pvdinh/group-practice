@@ -109,7 +109,7 @@ namespace SellSmartPhone.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            return RedirectToAction("Index", "home");
+            return RedirectToAction("Index","home");
         }
     }
 }
