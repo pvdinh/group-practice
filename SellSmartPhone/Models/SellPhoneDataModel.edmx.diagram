@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="SellphonesModel.Nhacungcap" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SellphonesModel.Sanpham" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SellphonesModel.SPkhuyenmai" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SellphonesModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SellphonesModel.Thongsokythuat" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
         <AssociationConnector Association="SellphonesModel.FK__Binhluan__MaKH__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="SellphonesModel.FK__DonhangKH__MaKH__267ABA7A" ManuallyRouted="false" />

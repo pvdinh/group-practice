@@ -10,14 +10,15 @@
 namespace SellSmartPhone.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class get_comment1_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int MaSP { get; set; }
+        public Nullable<int> MaKH { get; set; }
+        public string Noidung { get; set; }
+        public System.DateTime Ngaydang { get; set; }
+        public string Hoten { get; set; }
+        public string Email { get; set; }
+        public string Avatar { get; set; }
     }
 }

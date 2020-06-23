@@ -277,6 +277,9 @@
     <Compile Include="Models\DonhangKH.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\get_comment1_Result.cs">
+      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\get_comment_Result.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
@@ -323,9 +326,6 @@
       <DependentUpon>SellPhoneDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SPkhuyenmai.cs">
-      <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>SellPhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Thongsokythuat.cs">
