@@ -3398,6 +3398,8 @@
     <Content Include="Areas\ADMIN\assets\vendor\prismjs\components.json" />
     <Content Include="Areas\ADMIN\Views\Manager\Index.cshtml" />
     <Content Include="Areas\ADMIN\Views\nhacungcap\ListNcc.cshtml" />
+    <Content Include="Areas\ADMIN\Views\nhacungcap\Edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\nhacungcap\profile.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

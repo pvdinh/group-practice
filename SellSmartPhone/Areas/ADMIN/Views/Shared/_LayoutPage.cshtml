@@ -45,12 +45,23 @@
                                 <span class="nav-link-text">Profile</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="ADMIN/nhacungcap/Index">
+                        @*<li class="nav-item">
+                            <a class="nav-link active" href="/ADMIN/nhacungcap/Index">
                                 <i class="ni ni-bullet-list-67 text-default"></i>
-                                <span class="nav-link-text">Nha Cung Cap</span>
-                            </a>
-                        </li>
+                                <span class="nav-link-text">Nhà cung cấp</span>
+                            </a>*@
+
+                    <li class="nav-item submenu dropdown ">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span>Thông tin nhà cung cấp</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right profile-menu">
+                            <li><a class="dropdown-item" href="/ADMIN/nhacungcap/Index"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>Danh sách nhà cung cấp</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i>Thêm nhà cung cấp</a></li>
+                        </ul>
+                    </li>
+                        @*</li>*@
                         <li class="nav-item">
                             <a class="nav-link" href="register.html">
                                 <i class="ni ni-circle-08 text-pink"></i>

@@ -79,12 +79,12 @@ namespace SellSmartPhone.Controllers
                 {
                     Session["idaccount"] = login.id;
 
-                    setAlert("dang nhap thanh cong", "success");
+                   
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    setAlert("dang nhap thanh cong", "success");
+                  
                     return RedirectToAction("Index","ADMIN/Manager");
                 }
                 //Session["idaccount"] = login.id;
