@@ -41,7 +41,7 @@ namespace SellSmartPhone.Areas.ADMIN.Controllers
         [HttpPost]
         public ActionResult add(Nhacungcap ncc)
         {
-
+            return View();
         }
     }
 }
