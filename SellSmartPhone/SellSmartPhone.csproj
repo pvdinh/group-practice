@@ -261,6 +261,7 @@
     <Compile Include="Areas\ADMIN\Controllers\BaoHanhController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\ManagerController.cs" />
     <Compile Include="Areas\ADMIN\Controllers\nhacungcapController.cs" />
+    <Compile Include="Areas\ADMIN\model\ThongTinBaoHanh.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3821,7 +3822,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ADMIN\Data\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>

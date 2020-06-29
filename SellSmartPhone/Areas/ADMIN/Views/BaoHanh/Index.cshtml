@@ -1,21 +1,91 @@
-﻿
+﻿@model IEnumerable<SellSmartPhone.Models.Account>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/ADMIN/Views/Shared/_LayoutPage.cshtml";
 }
-<div class="container-fluid mt--6">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header border-0">
-                    <h3 class="mb-0">Thông tin bảo hành</h3>
-                </div>
-                <form method="post">
-                    <input name="name" type="text" placeholder="Nhập tên khách hàng" />
-                    <button type="submit" value="Search">Search</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
+<br/>
+<br/>
+
+@using (Html.BeginForm())
+{
+<center>
+   @Html.TextBox("search") <input type="submit" value="Search" />
+</center>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaysinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phonenumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaysinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phonenumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+          
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
+          
+        </td>
+    </tr>
+}
+
+</table>
+
+}
