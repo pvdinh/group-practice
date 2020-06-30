@@ -1,91 +1,81 @@
-﻿@model IEnumerable<SellSmartPhone.Models.Account>
+﻿@model IEnumerable<SellSmartPhone.Models.DonhangKH>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/ADMIN/Views/Shared/_LayoutPage.cshtml";
 }
 
-<br/>
-<br/>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "BaoHanh", FormMethod.Get))
 {
-<center>
-   @Html.TextBox("search") <input type="submit" value="Search" />
-</center>
-<br/>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hoten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ngaysinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phonenumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-      
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th></th>
-    </tr>
+    <center>
+        @Html.TextBox("search") <input type="submit" value="Search" />
+    </center>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDAccount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hoten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ngaysinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phonenumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaDH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phivanchuyen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhuongthucTT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydatmua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tinhtrangdonhang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ghichu)
+            </th>
+            <th></th>
+        </tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-          
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
-          
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phivanchuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhuongthucTT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaydatmua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongTien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tinhtrangdonhang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ghichu)
+                </td>
+                <td>
+                   
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
+                  
+                </td>
+            </tr>
+        }
 
-</table>
-
+    </table>
 }

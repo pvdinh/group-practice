@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using SellSmartPhone.Areas.ADMIN.model;
+using System.Data.Entity;
 
 namespace SellSmartPhone.Areas.ADMIN.Controllers
 {
@@ -16,16 +17,17 @@ namespace SellSmartPhone.Areas.ADMIN.Controllers
 
         public ActionResult Index(string search)
         {
-            var links = from l in db.Accounts
-                        select l;
-            if(!String.IsNullOrEmpty(search))
-            {
-                links = links.Where(s => s.Hoten.Contains(search));
-            }
-
-            return View(links);
+            List<DonhangKH> pList = db.DonhangKHs.Where(x => x.MaKH.ToString().Contains(search)).ToList();
+            return View(pList);
         }
 
+        public ActionResult DeTails()
+        {
+          
+
+            return View();
+            
+        }
 
     }
 }
