@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutPage.cshtml";
+}
+
+    <div>
+        <div>
+            <span>Tên nhà cung cấp :@Model.TenNhaungcap </span>
+        </div>
+        <div>
+            <span>Số điện thoại :@Model.phonenumber </span>           
+        </div>
+        <div>
+            <span>Email :@Model.email</span>          
+        </div>
+        <div>
+            <a href="#">
+                <span>
+                    chi tiết hợp đồng
+                </span>
+            </a>
+        </div>
+    </div>

@@ -50,14 +50,14 @@ namespace SellSmartPhone.Controllers
             Session["countcmt"] = 6;
             ViewBag.user = Session["user"];
             int id = int.Parse(Session["id"].ToString());
-            List<get_comment_Result1> listcomment = db.get_comment(id).Take(4).ToList();
+            List<get_comment_Result> listcomment = db.get_comment(id).Take(4).ToList();
             return PartialView("_Viewcomment",listcomment);
         }
         public ActionResult commentMore()
         {
             ViewBag.user = Session["user"];
             int id = int.Parse(Session["id"].ToString());
-            List<get_comment_Result1> listcomment = db.get_comment(id).Take(int.Parse(Session["countcmt"].ToString())).ToList();
+            List<get_comment_Result> listcomment = db.get_comment(id).Take(int.Parse(Session["countcmt"].ToString())).ToList();
             return PartialView("_ViewcommentMore", listcomment);
         }
         public ActionResult productReative()
@@ -88,7 +88,7 @@ namespace SellSmartPhone.Controllers
                 Account x = (Account)Session["user"];
                 db.add_comment(lastest + 1, id,x.IDAccount, NoiDung, ngaydang, HoTen, Email);
             }
-            List<get_comment_Result1> listcomment = db.get_comment(id).ToList();
+            List<get_comment_Result> listcomment = db.get_comment(id).ToList();
             return PartialView("_Viewcomment", listcomment);
         }
 
