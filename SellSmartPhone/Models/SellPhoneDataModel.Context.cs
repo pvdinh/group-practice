@@ -39,7 +39,6 @@ namespace SellSmartPhone.Models
         public virtual DbSet<Nhacungcap> Nhacungcaps { get; set; }
         public virtual DbSet<Sanpham> Sanphams { get; set; }
         public virtual DbSet<SPkhuyenmai> SPkhuyenmais { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Thongsokythuat> Thongsokythuats { get; set; }
     
         public virtual int addproduct(Nullable<int> maSP, string tenSP, Nullable<int> loaiSP, Nullable<int> hangSX, string xuatxu, Nullable<double> gia, string mota, string anh, Nullable<int> isnew, Nullable<int> ishot)
