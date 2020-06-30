@@ -847,6 +847,15 @@
             <Parameter Name="Giatri" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="get_product_discount" ReturnType="Collection(SellphonesModel.get_product_discount_Result)" />
+          <FunctionImport Name="Load_Cart" ReturnType="Collection(SellphonesModel.Load_Cart_Result)">
+            <Parameter Name="idKH" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delete_expired">
+          <Parameter Name="Maspkm" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_comment" ReturnType="Collection(SellphonesModel.get_comment_Result1)">
+          <Parameter Name="MaSP" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="add_comment">
             <Parameter Name="MaBL" Mode="In" Type="Int32" />
             <Parameter Name="MaSP" Mode="In" Type="Int32" />
@@ -867,36 +876,6 @@
             <Parameter Name="Hoten" Mode="In" Type="String" />
             <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
             <Parameter Name="diachi" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Load_Cart" ReturnType="Collection(SellphonesModel.Load_Cart_Result)">
-            <Parameter Name="idKH" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="add_comment1">
-            <Parameter Name="MaBL" Mode="In" Type="Int32" />
-            <Parameter Name="MaSP" Mode="In" Type="Int32" />
-            <Parameter Name="MaKH" Mode="In" Type="Int32" />
-            <Parameter Name="Noidung" Mode="In" Type="String" />
-            <Parameter Name="date" Mode="In" Type="DateTime" />
-            <Parameter Name="Hoten" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="delete_expired">
-          <Parameter Name="Maspkm" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="edit_password1">
-            <Parameter Name="idaccount" Mode="In" Type="Int32" />
-            <Parameter Name="password" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="update_account1">
-            <Parameter Name="idaccount" Mode="In" Type="Int32" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="Hoten" Mode="In" Type="String" />
-            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-            <Parameter Name="diachi" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="get_comment" ReturnType="Collection(SellphonesModel.get_comment_Result1)">
-            <Parameter Name="MaSP" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="get_product_discount_Result">
@@ -1145,10 +1124,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="add_comment1" FunctionName="SellphonesModel.Store.add_comment" />
           <FunctionImportMapping FunctionImportName="delete_expired" FunctionName="SellphonesModel.Store.delete_expired" />
-          <FunctionImportMapping FunctionImportName="edit_password1" FunctionName="SellphonesModel.Store.edit_password" />
-          <FunctionImportMapping FunctionImportName="update_account1" FunctionName="SellphonesModel.Store.update_account" />
           <FunctionImportMapping FunctionImportName="get_comment" FunctionName="SellphonesModel.Store.get_comment">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SellphonesModel.get_comment_Result1">
@@ -1162,6 +1138,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="add_comment" FunctionName="SellphonesModel.Store.add_comment" />
+          <FunctionImportMapping FunctionImportName="edit_password" FunctionName="SellphonesModel.Store.edit_password" />
+          <FunctionImportMapping FunctionImportName="update_account" FunctionName="SellphonesModel.Store.update_account" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
