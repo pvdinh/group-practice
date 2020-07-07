@@ -84,8 +84,8 @@ namespace SellSmartPhone.Controllers
                 }
                 else
                 {
-                  
-                    return RedirectToAction("Index","ADMIN/Manager");
+                    Session["idaccount"] = login.id;
+                    return RedirectToAction("Index", "Home");
                 }
                 //Session["idaccount"] = login.id;
 
