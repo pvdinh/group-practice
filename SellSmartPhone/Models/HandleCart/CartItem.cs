@@ -26,7 +26,7 @@ namespace SellSmartPhone.Models.HandleCart
         public string Anh { get; set; }
         public int Soluong { get; set; }
         public Nullable<int> Giamgia { get; set; }
-        public Nullable<double> giá_mới { get; set; }
+        public Nullable<double> giamoi { get; set; }
         public double Phivanchuyen { get; set; }
 
         //private double thanhTien;

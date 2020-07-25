@@ -1,4 +1,5 @@
 ﻿using SellSmartPhone.Models;
+using SellSmartPhone.Models.HandleCart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace SellSmartPhone.Controllers
 {
     public class navbarController : Controller
     {
+        private SellphonesEntities db = new SellphonesEntities();
+        private Cart cart = new Cart();
         // GET: navbar
         public ActionResult Index()
         {
@@ -32,6 +35,29 @@ namespace SellSmartPhone.Controllers
                 data.allhangsxs = db.HangSXes.ToList();
                 return PartialView("_ViewcategoryproductWithBrand", data);
             }
+        }
+
+        public ActionResult addBasket(int? MaSP)
+        {
+            Session["user"] = 1000;
+            cart.ListCart = new Cart().GetCart(1000);
+            cart.AddToCart((int)MaSP, 1000);
+            cart.ListCart = new Cart().GetCart(1000);
+            return PartialView("_ViewBasket", cart.ListCart);
+        }
+        public ActionResult deleteBasket(int? MaSP)
+        {
+            Session["user"] = 1000;
+            cart.ListCart = new Cart().GetCart(1000);
+            cart.DeleteCart((int)MaSP, 1000);
+            cart.ListCart = new Cart().GetCart(1000);
+            return PartialView("_ViewBasket", cart.ListCart);
+        }
+        public ActionResult viewBasket()
+        {
+            Session["user"] = 1000;
+            cart.ListCart = new Cart().GetCart(1000);
+            return PartialView("_ViewBasket",cart.ListCart);
         }
     }
 }

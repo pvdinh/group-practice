@@ -91,7 +91,7 @@ namespace SellSmartPhone.Models.HandleCart
             {
                 if (item.Giamgia != null)
                 {
-                    Total += item.giá_mới;
+                    Total += item.giamoi;
                 }
                 else
                 {

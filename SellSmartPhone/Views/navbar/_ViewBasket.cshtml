@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SellSmartPhone.Models.HandleCart.Cart>
+    @using SellSmartPhone.Models.HandleCart;
+
+@{ 
+    int sl = Model.Count();
+    Cart cart = new Cart();
+    cart.ListCart = new Cart().GetCart(int.Parse(Session["user"].ToString()));
+    double total =(double) cart.TotalCart(int.Parse(Session["user"].ToString()));
+}
+<div class="basket">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <div class="basket-item-count">
+            <span class="count">@sl</span>
+            <img src="~/template/assets/images/icon-cart.png" alt="" />
+        </div>
+
+        <div class="total-price-basket">
+            <span class="lbl">your cart:</span>
+            <span class="total-price">
+                <span class="sign"></span><span class="value">@string.Format("{0:0,0}", total)  VNĐ</span>
+            </span>
+        </div>
+    </a>
+
+    <ul class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            if (item.LoaiSP == 1111)
+            {
+                <li>
+                    <div class="basket-item">
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 no-margin text-center">
+                                <div class="thumb">
+                                    <img alt="" src="~/image/smartphone/@item.tenhang.Replace(" ",string.Empty)/@item.Anh" />
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 no-margin">
+                                <div class="title">@item.TenSP</div>
+                                @if (item.Giamgia != null)
+                                {
+                                    <div class="price" style="text-decoration:line-through;">@string.Format("{0:0,0}", item.Gia)  VNĐ</div>
+                                    <div class="price"> @string.Format("{0:0,0}", item.giamoi) * @item.Soluong  VNĐ</div>
+                                }
+                                else
+                                {
+                                    <div class="price">@string.Format("{0:0,0}", item.Gia) * @item.Soluong VNĐ</div>
+                                }
+
+                            </div>
+                        </div>
+                        <a class="close-btn" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/deleteBasket?MaSP=@item.MaSP"></a>
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <div class="basket-item">
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 no-margin text-center">
+                                <div class="thumb">
+                                    <img alt="" src="~/image/@item.TenLoai/@item.Anh"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 no-margin">
+                                <div class="title">@item.TenSP</div>
+                                @if (item.Giamgia != null)
+                                {
+                                    <div class="price" style="text-decoration:line-through;">@string.Format("{0:0,0}", item.Gia)  VNĐ</div>
+                                    <div class="price"> @string.Format("{0:0,0}", item.giamoi)  VNĐ</div>
+                                }
+                                else
+                                {
+                                    <div class="price">@string.Format("{0:0,0}", item.Gia) VNĐ</div>
+                                }
+                            </div>
+                        </div>
+                        <a class="close-btn" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/deleteBasket?MaSP=@item.MaSP"></a>
+                    </div>
+                </li>
+            }
+        }
+        <li class="checkout">
+            <div class="basket-item">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="cart.html" class="le-button inverse">View cart</a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="checkout.html" class="le-button">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div><!-- /.basket -->
