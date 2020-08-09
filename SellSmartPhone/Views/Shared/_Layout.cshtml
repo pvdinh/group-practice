@@ -68,16 +68,16 @@
                     </ul>
                 </div>
                 @{
-                    if(Session["idaccount"] != null)
+                    if (Session["idaccount"] != null)
                     {
-                    Session.Timeout = 1440;
-                    using (SellSmartPhone.Models.SellphonesEntities db = new SellSmartPhone.Models.SellphonesEntities())
-                    {
-                        int temp = int.Parse(Session["idaccount"].ToString());
-                        var x = db.Accounts.Where(s => s.IDAccount == temp).FirstOrDefault();
-                        Session["user"] = x;
-                        ViewBag.user = x;
-                    }
+                        Session.Timeout = 1440;
+                        using (SellSmartPhone.Models.SellphonesEntities db = new SellSmartPhone.Models.SellphonesEntities())
+                        {
+                            int temp = int.Parse(Session["idaccount"].ToString());
+                            var x = db.Accounts.Where(s => s.IDAccount == temp).FirstOrDefault();
+                            Session["user"] = x;
+                            ViewBag.user = x;
+                        }
                     }
 
                 }
@@ -179,7 +179,7 @@
                     <div class="top-cart-row-container">
                         <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
                         <div class="top-cart-holder dropdown animate-dropdown" id="basket">
-                            @{ Html.RenderAction("viewBasket", "navbar");}
+                            @RenderSection("Iconcart", required:true);
                         </div><!-- /.top-cart-holder -->
                     </div><!-- /.top-cart-row-container -->
                     <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->
@@ -200,7 +200,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div><!-- /.navbar-header -->
-                <div class="collapse navbar-collapse" id="mc-horizontal-menu-collapse">
+                <div class="collapse navbar-collapse" id="mc-horizontal-menu-collapse" style="border:none;">
                     <ul class="nav navbar-nav">
                         @{Html.RenderAction("categoryproductWithBrand", "navbar"); }
                     </ul><!-- /.navbar-nav -->

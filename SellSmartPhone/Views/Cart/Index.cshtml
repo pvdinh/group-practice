@@ -3,54 +3,19 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-    <section id="cart-page">
-        @if (ViewBag.countCart != null && ViewBag.countCart > 0)
-        {
-            
-                    <!-- ========================================= CONTENT ========================================= -->
-                    Html.RenderAction("Cart");
-
-                    
-                    @*else
-                    {
-                        <div class="row no-margin cart-item">
-
-                            <p>Giỏ hàng hiện đang trống!</p>
-
-                        </div>
-                    }*@
-                
-   
-
-            
-        }
-        </section>
-
-
-
-<!-- JavaScripts placed at the end of the document so the pages load faster -->
-<script async="" src="https://t.sharethis.com/1/d/t.dhj?rnd=1589034575287&amp;cid=c010&amp;dmn=localhost" id="pxscrpt"></script>
-<script type="text/javascript" id="async-buttons" src="https://ws.sharethis.com/button/async-buttons.js"></script>
-<script src="assets/js/jquery-1.10.2.min.js"></script>
-<script src="assets/js/jquery-migrate-1.2.1.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script src="assets/js/gmap3.min.js"></script>
-<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/css_browser_selector.min.js"></script>
-<script src="assets/js/echo.min.js"></script>
-<script src="assets/js/jquery.easing-1.3.min.js"></script>
-<script src="assets/js/bootstrap-slider.min.js"></script>
-<script src="assets/js/jquery.raty.min.js"></script>
-<script src="assets/js/jquery.prettyPhoto.min.js"></script>
-<script src="assets/js/jquery.customSelect.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/scripts.js"></script>
-
-
-<script src="switchstylesheet/switchstylesheet.js"></script>
+@section Iconcart{
+    <a class="dropdown-toggle" data-toggle="dropdown" href="/cart/index">
+        <div class="basket-item-count">
+            <img src="~/template/assets/images/icon-cart.png" alt="" />
+        </div>
+    </a>
+}
+@*thư viện ajax*@
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div id="Cart">
+    @{ Html.RenderAction("Cart");}
+</div>
 
 <script>
     $(document).ready(function () {
@@ -64,9 +29,3 @@
         $('.show-theme-options').delay(2000).trigger('click');
     });
 </script>
-
-
-<script src="http://w.sharethis.com/button/buttons.js"></script>
-
-
-<iframe src="https://c.sharethis.mgr.consensu.org/portal-v2.html" id="st_gdpr_iframe" title="GDPR Consent Management" style="width: 0px; height: 0px; position: absolute; left: -5000px;"></iframe><div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">ShareThis Copy and Paste</div><iframe id="nr-ext-rsicon" style="position: absolute; display: none; width: 50px; height: 50px; z-index: 2147483647; border-style: none; background: transparent;" __idm_frm__="261"></iframe><div id="eJOY__extension_root" style="all: unset;"></div><div id="stwrapper" class="stwrapper stwrapper4x" style="display: none;"><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" src="https://ws.sharethis.com/secure/index.html"></iframe></div><div id="stOverlay" onclick="javascript:stWidget.closeWidget();"></div>

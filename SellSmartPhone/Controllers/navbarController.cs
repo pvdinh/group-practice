@@ -39,7 +39,7 @@ namespace SellSmartPhone.Controllers
 
         public ActionResult addBasket(int? MaSP)
         {
-            Session["user"] = 1000;
+            Session["idaccount"] = 1000;
             cart.ListCart = new Cart().GetCart(1000);
             cart.AddToCart((int)MaSP, 1000);
             cart.ListCart = new Cart().GetCart(1000);
@@ -47,7 +47,7 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult deleteBasket(int? MaSP)
         {
-            Session["user"] = 1000;
+            Session["idaccount"] = 1000;
             cart.ListCart = new Cart().GetCart(1000);
             cart.DeleteCart((int)MaSP, 1000);
             cart.ListCart = new Cart().GetCart(1000);
@@ -55,7 +55,7 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult viewBasket()
         {
-            Session["user"] = 1000;
+            Session["idaccount"] = 1000;
             cart.ListCart = new Cart().GetCart(1000);
             return PartialView("_ViewBasket",cart.ListCart);
         }

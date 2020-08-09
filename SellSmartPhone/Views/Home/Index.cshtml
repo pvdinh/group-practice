@@ -3,6 +3,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Iconcart{
+    @{ Html.RenderAction("viewBasket", "navbar");}
+}
 @*thư viện ajax*@
 <script src="~/Scripts/jquery-3.5.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

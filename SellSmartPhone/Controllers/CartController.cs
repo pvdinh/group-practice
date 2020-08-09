@@ -17,8 +17,8 @@ namespace SellSmartPhone.Controllers
         private Cart cart = new Cart();
         public ActionResult Index(int? idSP)
         {
-            Session["user"] = 1001;
-            int MaKH = int.Parse(Session["user"].ToString());
+            Session["idaccount"] = 1000;
+            int MaKH = int.Parse(Session["idaccount"].ToString());
             cart.ListCart = new Cart().GetCart(MaKH);
             if (idSP != null)
             {
@@ -30,8 +30,8 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult PayCart(int? idSP)
         {
-            Session["user"] = 1001;
-            int MaKH = int.Parse(Session["user"].ToString());
+            Session["idaccount"] = 1000;
+            int MaKH = int.Parse(Session["idaccount"].ToString());
             if (idSP != null)
             {
                 var data = db.Sanphams.Where(s => s.MaSP == idSP).FirstOrDefault();
@@ -40,28 +40,28 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult Cart()
         {
-            int MaKH = int.Parse(Session["user"].ToString());
+            int MaKH = int.Parse(Session["idaccount"].ToString());
             cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_Cart", cart.ListCart);
         }
         public ActionResult AddCart(int idSP)
         {
-            int MaKH = int.Parse(Session["user"].ToString());
-            cart.AddToCart(MaKH, idSP);
+            int MaKH = int.Parse(Session["idaccount"].ToString());
+            cart.AddToCart(idSP, MaKH);
             cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_Cart", cart.ListCart);
         }
         public ActionResult SubCart(int idSP)
         {
-            int MaKH = int.Parse(Session["user"].ToString());
+            int MaKH = int.Parse(Session["idaccount"].ToString());
             cart.SubCart(MaKH, idSP);
             cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_Cart", cart.ListCart);
         }
         public ActionResult DeleteCart(int idSP)
         {
-            int MaKH = int.Parse(Session["user"].ToString());
-            cart.DeleteCart(MaKH, idSP);
+            int MaKH = int.Parse(Session["idaccount"].ToString());
+            cart.DeleteCart(idSP, MaKH);
             cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_Cart", cart.ListCart);
         }
