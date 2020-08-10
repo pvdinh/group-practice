@@ -17,7 +17,6 @@ namespace SellSmartPhone.Controllers
         private Cart cart = new Cart();
         public ActionResult Index(int? idSP)
         {
-            Session["idaccount"] = 1000;
             int MaKH = int.Parse(Session["idaccount"].ToString());
             cart.ListCart = new Cart().GetCart(MaKH);
             if (idSP != null)
@@ -30,7 +29,6 @@ namespace SellSmartPhone.Controllers
         }
         public ActionResult PayCart(int? idSP)
         {
-            Session["idaccount"] = 1000;
             int MaKH = int.Parse(Session["idaccount"].ToString());
             if (idSP != null)
             {

@@ -39,25 +39,30 @@ namespace SellSmartPhone.Controllers
 
         public ActionResult addBasket(int? MaSP)
         {
-            Session["idaccount"] = 1000;
-            cart.ListCart = new Cart().GetCart(1000);
-            cart.AddToCart((int)MaSP, 1000);
-            cart.ListCart = new Cart().GetCart(1000);
+            int MaKH = int.Parse(Session["idaccount"].ToString());
+            cart.ListCart = new Cart().GetCart(MaKH);
+            cart.AddToCart((int)MaSP, MaKH);
+            cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_ViewBasket", cart.ListCart);
         }
         public ActionResult deleteBasket(int? MaSP)
         {
-            Session["idaccount"] = 1000;
-            cart.ListCart = new Cart().GetCart(1000);
-            cart.DeleteCart((int)MaSP, 1000);
-            cart.ListCart = new Cart().GetCart(1000);
+            int MaKH = int.Parse(Session["idaccount"].ToString());
+            cart.ListCart = new Cart().GetCart(MaKH);
+            cart.DeleteCart((int)MaSP, MaKH);
+            cart.ListCart = new Cart().GetCart(MaKH);
             return PartialView("_ViewBasket", cart.ListCart);
         }
         public ActionResult viewBasket()
         {
-            Session["idaccount"] = 1000;
-            cart.ListCart = new Cart().GetCart(1000);
-            return PartialView("_ViewBasket",cart.ListCart);
+            if (Session["idaccount"] != null)
+            {
+                int MaKH = int.Parse(Session["idaccount"].ToString());
+                cart.ListCart = new Cart().GetCart(MaKH);
+                return PartialView("_ViewBasket", cart.ListCart);
+            }
+            else return PartialView("_ViewNo");
+
         }
     }
 }

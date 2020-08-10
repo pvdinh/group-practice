@@ -4,6 +4,9 @@
     ViewBag.Title = "result";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Iconcart{
+    @{ Html.RenderAction("viewBasket", "navbar");}
+}
 <div>
 
     <section id="category-grid" class="">
@@ -39,7 +42,7 @@
 
                         <div class="tab-content">
                             <div class="products-grid fade tab-pane active in">
-                                
+
                             </div><!-- /.products-list -->
                         </div><!-- /.products-grid #list-view -->
                     </div><!-- /.tab-content -->
@@ -51,5 +54,5 @@
     </section><!-- /#category-grid -->
 </div>
 <script>
-     document.title='Tìm kiếm sản phẩm'
+    document.title = 'Tìm kiếm sản phẩm'
 </script>

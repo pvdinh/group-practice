@@ -68,7 +68,15 @@
                         }
                         <div class="hover-area">
                             <div class="add-cart-button">
-                                <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/addBasket?MaSP=@item.MaSP" class="le-button" onclick="return alert('Thêm vào giỏ thành công.');">Cho vào giỏ</a>
+                                @if (Session["idaccount"] != null)
+                                {
+                                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/addBasket?MaSP=@item.MaSP" class="le-button" onclick="return alert('Thêm vào giỏ thành công.');">Cho vào giỏ</a>
+                                }
+                                else
+                                {
+                                    <a class="le-button" href="#" onclick="return alert('Bạn cần đăng nhập trước khi mua hàng.');">Cho vào giỏ</a>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -115,7 +123,14 @@
                         }
                         <div class="hover-area">
                             <div class="add-cart-button">
-                                <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/addBasket?MaSP=@item.MaSP" class="le-button" onclick="return alert('Thêm vào giỏ thành công.');">Cho vào giỏ</a>
+                                @if (Session["idaccount"] != null)
+                                {
+                                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#basket" href="/navbar/addBasket?MaSP=@item.MaSP" class="le-button" onclick="return alert('Thêm vào giỏ thành công.');">Cho vào giỏ</a>
+                                }
+                                else
+                                {
+                                    <a class="le-button" href="#" onclick="return alert('Bạn cần đăng nhập trước khi mua hàng.');">Cho vào giỏ</a>
+                                }
                             </div>
                         </div>
                     </div>

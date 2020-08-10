@@ -4,6 +4,9 @@
     ViewBag.Title = "result";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Iconcart{
+    @{ Html.RenderAction("viewBasket", "navbar");}
+}
 <div>
 
     <section id="category-grid" class="">
@@ -11,7 +14,7 @@
 
 
             <!-- ========================================= SIDEBAR ========================================= -->
-            @{Html.RenderAction("result","searchAdvanced");}
+            @{Html.RenderAction("result", "searchAdvanced");}
             <!-- ========================================= SIDEBAR : END ========================================= -->
             <!-- ========================================= CONTENT ========================================= -->
             <div class="col-xs-12 col-sm-9 no-margin wide sidebar">
@@ -51,5 +54,5 @@
     </section><!-- /#category-grid -->
 </div>
 <script>
-    document.title='Tìm kiếm sản phẩm'
+    document.title = 'Tìm kiếm sản phẩm'
 </script>
