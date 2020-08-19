@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -70,6 +73,42 @@ namespace SellSmartPhone.Controllers
             }           
         }
 
-        
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SubmitPassword(string Email)
+        {
+            TempData["email"] = Email;
+
+            var user = db.Accounts.SqlQuery("SELECT * FROM dbo.Account WHERE Email=@Email", new SqlParameter("@Email", Email)).FirstOrDefault();
+            if(user != null)
+            {
+                MailMessage mail = new MailMessage("phamvandinhxyz@gmail.com", Email);
+                mail.Subject="Your Password !";
+                mail.Body = string.Format("Hello : <h2>{0}</h2> Your password is : <h1>{1}</h1>.",user.Hoten,user.Password);
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential nc = new NetworkCredential();
+                nc.UserName = "phamvandinhxyz@gmail.com";
+                nc.Password = "vodoivip12";
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = nc;
+                smtp.Port = 587;
+                smtp.Send(mail);
+                TempData["alert"] = "Your password has been sent to " + user.Email;
+            }
+            else
+            {
+                TempData["warning"] = "User not Exist !!";
+            }
+            return View("ForgetPassword");
+        }
+
     }
 }

@@ -886,6 +886,7 @@
     <Content Include="Views\navbar\_ViewBasket.cshtml" />
     <Content Include="Views\navbar\_ViewNo.cshtml" />
     <Content Include="Views\Cart\ViewNo.cshtml" />
+    <Content Include="Views\Register\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
