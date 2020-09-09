@@ -14,10 +14,10 @@
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Hoten" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Ngaysinh" Type="date" Nullable="false" />
-          <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="500" />
           <Property Name="Phonenumber" Type="char" MaxLength="15" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Avatar" Type="nchar" MaxLength="50" />
+          <Property Name="Avatar" Type="nchar" MaxLength="500" />
           <Property Name="Type" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="BaoHanh">
@@ -116,7 +116,7 @@
             <PropertyRef Name="MaSP" />
           </Key>
           <Property Name="MaSP" Type="int" Nullable="false" />
-          <Property Name="TenSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenSP" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LoaiSP" Type="int" Nullable="false" />
           <Property Name="HangSX" Type="int" Nullable="false" />
           <Property Name="Xuatxu" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -136,16 +136,6 @@
           <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="Giamgia" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Thongsokythuat">
           <Key>
             <PropertyRef Name="MaSP" />
@@ -156,7 +146,7 @@
           <Property Name="Thuoctinh" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Giatri" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <Association Name="FK__BaoHanh__MaSp__2D27B809">
+        <Association Name="FK__BaoHanh__MaSp__286302EC">
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="0..1" />
           <End Role="BaoHanh" Type="Self.BaoHanh" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Binhluan__MaKH__239E4DCF">
+        <Association Name="FK__Binhluan__MaKH__29572725">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Binhluan" Type="Self.Binhluan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Binhluan__MaSP__22AA2996">
+        <Association Name="FK__Binhluan__MaSP__2A4B4B5E">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Binhluan" Type="Self.Binhluan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChitietDH__MaDH__29572725">
+        <Association Name="FK__ChitietDH__MaDH__2B3F6F97">
           <End Role="DonhangKH" Type="Self.DonhangKH" Multiplicity="0..1" />
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChitietDH__MaSP__2A4B4B5E">
+        <Association Name="FK__ChitietDH__MaSP__2C3393D0">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="0..1" />
           <End Role="ChitietDH" Type="Self.ChitietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonhangKH__MaKH__267ABA7A">
+        <Association Name="FK__DonhangKH__MaKH__2D27B809">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="DonhangKH" Type="Self.DonhangKH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hopdong__IDNhacu__32E0915F">
+        <Association Name="FK__Hopdong__IDNhacu__2E1BDC42">
           <End Role="Nhacungcap" Type="Self.Nhacungcap" Multiplicity="1" />
           <End Role="Hopdong" Type="Self.Hopdong" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hopdong__IDSP__31EC6D26">
+        <Association Name="FK__Hopdong__IDSP__2F10007B">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Hopdong" Type="Self.Hopdong" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +242,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sanpham__HangSX__15502E78">
+        <Association Name="FK__Sanpham__HangSX__300424B4">
           <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +254,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sanpham__LoaiSP__145C0A3F">
+        <Association Name="FK__Sanpham__LoaiSP__30F848ED">
           <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="1" />
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +266,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPkhuyenm__MaSPK__1CF15040">
+        <Association Name="FK__SPkhuyenm__MaSPK__31EC6D26">
           <End Role="Khuyenmai" Type="Self.Khuyenmai" Multiplicity="1" />
           <End Role="SPkhuyenmai" Type="Self.SPkhuyenmai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +278,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPkhuyenma__MaSP__1DE57479">
+        <Association Name="FK__SPkhuyenma__MaSP__32E0915F">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="SPkhuyenmai" Type="Self.SPkhuyenmai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +290,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Thongsokyt__MaSP__182C9B23">
+        <Association Name="FK__Thongsokyt__MaSP__33D4B598">
           <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
           <End Role="Thongsokythuat" Type="Self.Thongsokythuat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -370,57 +360,56 @@
           <EntitySet Name="Nhacungcap" EntityType="Self.Nhacungcap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sanpham" EntityType="Self.Sanpham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SPkhuyenmai" EntityType="Self.SPkhuyenmai" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Thongsokythuat" EntityType="Self.Thongsokythuat" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BaoHanh__MaSp__2D27B809" Association="Self.FK__BaoHanh__MaSp__2D27B809">
+          <AssociationSet Name="FK__BaoHanh__MaSp__286302EC" Association="Self.FK__BaoHanh__MaSp__286302EC">
             <End Role="ChitietDH" EntitySet="ChitietDH" />
             <End Role="BaoHanh" EntitySet="BaoHanh" />
           </AssociationSet>
-          <AssociationSet Name="FK__Binhluan__MaKH__239E4DCF" Association="Self.FK__Binhluan__MaKH__239E4DCF">
+          <AssociationSet Name="FK__Binhluan__MaKH__29572725" Association="Self.FK__Binhluan__MaKH__29572725">
             <End Role="Account" EntitySet="Account" />
             <End Role="Binhluan" EntitySet="Binhluan" />
           </AssociationSet>
-          <AssociationSet Name="FK__Binhluan__MaSP__22AA2996" Association="Self.FK__Binhluan__MaSP__22AA2996">
+          <AssociationSet Name="FK__Binhluan__MaSP__2A4B4B5E" Association="Self.FK__Binhluan__MaSP__2A4B4B5E">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Binhluan" EntitySet="Binhluan" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChitietDH__MaDH__29572725" Association="Self.FK__ChitietDH__MaDH__29572725">
+          <AssociationSet Name="FK__ChitietDH__MaDH__2B3F6F97" Association="Self.FK__ChitietDH__MaDH__2B3F6F97">
             <End Role="DonhangKH" EntitySet="DonhangKH" />
             <End Role="ChitietDH" EntitySet="ChitietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChitietDH__MaSP__2A4B4B5E" Association="Self.FK__ChitietDH__MaSP__2A4B4B5E">
+          <AssociationSet Name="FK__ChitietDH__MaSP__2C3393D0" Association="Self.FK__ChitietDH__MaSP__2C3393D0">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="ChitietDH" EntitySet="ChitietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonhangKH__MaKH__267ABA7A" Association="Self.FK__DonhangKH__MaKH__267ABA7A">
+          <AssociationSet Name="FK__DonhangKH__MaKH__2D27B809" Association="Self.FK__DonhangKH__MaKH__2D27B809">
             <End Role="Account" EntitySet="Account" />
             <End Role="DonhangKH" EntitySet="DonhangKH" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hopdong__IDNhacu__32E0915F" Association="Self.FK__Hopdong__IDNhacu__32E0915F">
+          <AssociationSet Name="FK__Hopdong__IDNhacu__2E1BDC42" Association="Self.FK__Hopdong__IDNhacu__2E1BDC42">
             <End Role="Nhacungcap" EntitySet="Nhacungcap" />
             <End Role="Hopdong" EntitySet="Hopdong" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hopdong__IDSP__31EC6D26" Association="Self.FK__Hopdong__IDSP__31EC6D26">
+          <AssociationSet Name="FK__Hopdong__IDSP__2F10007B" Association="Self.FK__Hopdong__IDSP__2F10007B">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Hopdong" EntitySet="Hopdong" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sanpham__HangSX__15502E78" Association="Self.FK__Sanpham__HangSX__15502E78">
+          <AssociationSet Name="FK__Sanpham__HangSX__300424B4" Association="Self.FK__Sanpham__HangSX__300424B4">
             <End Role="HangSX" EntitySet="HangSX" />
             <End Role="Sanpham" EntitySet="Sanpham" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sanpham__LoaiSP__145C0A3F" Association="Self.FK__Sanpham__LoaiSP__145C0A3F">
+          <AssociationSet Name="FK__Sanpham__LoaiSP__30F848ED" Association="Self.FK__Sanpham__LoaiSP__30F848ED">
             <End Role="LoaiSP" EntitySet="LoaiSP" />
             <End Role="Sanpham" EntitySet="Sanpham" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPkhuyenm__MaSPK__1CF15040" Association="Self.FK__SPkhuyenm__MaSPK__1CF15040">
+          <AssociationSet Name="FK__SPkhuyenm__MaSPK__31EC6D26" Association="Self.FK__SPkhuyenm__MaSPK__31EC6D26">
             <End Role="Khuyenmai" EntitySet="Khuyenmai" />
             <End Role="SPkhuyenmai" EntitySet="SPkhuyenmai" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPkhuyenma__MaSP__1DE57479" Association="Self.FK__SPkhuyenma__MaSP__1DE57479">
+          <AssociationSet Name="FK__SPkhuyenma__MaSP__32E0915F" Association="Self.FK__SPkhuyenma__MaSP__32E0915F">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="SPkhuyenmai" EntitySet="SPkhuyenmai" />
           </AssociationSet>
-          <AssociationSet Name="FK__Thongsokyt__MaSP__182C9B23" Association="Self.FK__Thongsokyt__MaSP__182C9B23">
+          <AssociationSet Name="FK__Thongsokyt__MaSP__33D4B598" Association="Self.FK__Thongsokyt__MaSP__33D4B598">
             <End Role="Sanpham" EntitySet="Sanpham" />
             <End Role="Thongsokythuat" EntitySet="Thongsokythuat" />
           </AssociationSet>
@@ -438,10 +427,10 @@
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
           <Property Name="Phonenumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Binhluans" Relationship="Self.FK__Binhluan__MaKH__239E4DCF" FromRole="Account" ToRole="Binhluan" />
           <NavigationProperty Name="DonhangKHs" Relationship="Self.FK__DonhangKH__MaKH__267ABA7A" FromRole="Account" ToRole="DonhangKH" />
@@ -556,7 +545,7 @@
             <PropertyRef Name="MaSP" />
           </Key>
           <Property Name="MaSP" Type="Int32" Nullable="false" />
-          <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LoaiSP" Type="Int32" Nullable="false" />
           <Property Name="HangSX" Type="Int32" Nullable="false" />
           <Property Name="Xuatxu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -584,16 +573,6 @@
           <Property Name="Giamgia" Type="Int32" />
           <NavigationProperty Name="Khuyenmai" Relationship="Self.FK__SPkhuyenm__MaSPK__1CF15040" FromRole="SPkhuyenmai" ToRole="Khuyenmai" />
           <NavigationProperty Name="Sanpham" Relationship="Self.FK__SPkhuyenma__MaSP__1DE57479" FromRole="SPkhuyenmai" ToRole="Sanpham" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Thongsokythuat">
           <Key>
@@ -775,7 +754,6 @@
           <EntitySet Name="Nhacungcaps" EntityType="Self.Nhacungcap" />
           <EntitySet Name="Sanphams" EntityType="Self.Sanpham" />
           <EntitySet Name="SPkhuyenmais" EntityType="Self.SPkhuyenmai" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Thongsokythuats" EntityType="Self.Thongsokythuat" />
           <AssociationSet Name="FK__Binhluan__MaKH__239E4DCF" Association="Self.FK__Binhluan__MaKH__239E4DCF">
             <End Role="Account" EntitySet="Accounts" />
@@ -1081,17 +1059,6 @@
                 <ScalarProperty Name="MaSPKM" ColumnName="MaSPKM" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
                 <ScalarProperty Name="Giamgia" ColumnName="Giamgia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SellphonesModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

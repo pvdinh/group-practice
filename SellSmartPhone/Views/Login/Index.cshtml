@@ -6,6 +6,10 @@
 @section Iconcart{
     @{ Html.RenderAction("viewBasket", "navbar");}
 }
+<script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<meta name="google-signin-client_id" content="940653054889-kegoojrlbqo5qh74s25761rpr9jb6vl8.apps.googleusercontent.com">
 <main id="authentication" class="inner-bottom-md">
     <div class="container">
         <div class="row" style="border-color:cadetblue;border-style:double;border-radius:20px">
@@ -27,10 +31,7 @@
                     <div class="social-auth-buttons">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-facebook"></i> Sign In with Facebook</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn-block btn-lg btn btn-twitter"><i class="fa fa-twitter"></i> Sign In with Twitter</button>
+                                <div class="g-signin2" data-onsuccess="onSignIn" id="logingg"></div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +79,6 @@
                             </a>
                         </div><!-- /.buttons-holder -->
                     </form>
-
                     <h2 class="semi-bold">Sign up today and you'll be able to :</h2>
 
                     <ul class="list-unstyled list-benefits">
@@ -94,3 +94,30 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </main><!-- /.authentication -->
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("Start...");
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        console.log("END..........");
+        var dataToSend = {
+            Name: profile.getName(),
+            Id: profile.getId(),
+            Email: profile.getEmail(),
+            Image: profile.getImageUrl()
+        };
+
+        $.ajax({
+            url: '/Login/confirm',
+            type: 'POST',
+            data: dataToSend,
+            success: function () {
+                window.location.href = '/home/index'
+            }
+        });
+
+    }
+</script>

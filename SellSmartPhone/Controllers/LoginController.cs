@@ -4,7 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using SellSmartPhone.Models;
+using SellSmartPhone.Models.AccountLoginGoogle;
 
 namespace SellSmartPhone.Controllers
 {
@@ -110,6 +112,21 @@ namespace SellSmartPhone.Controllers
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Index","home");
+        }
+
+        [HttpPost]
+        public ActionResult confirm(AccGoogle recivedData)
+        {
+            if(recivedData != null)
+            {
+                Session["idaccount"] = AccGoogle.LoginGoogle(recivedData, db);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("Index");
+            }
+
         }
     }
 }

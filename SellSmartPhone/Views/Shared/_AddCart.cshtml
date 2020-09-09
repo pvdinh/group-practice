@@ -10,7 +10,7 @@
                     <label>Tổng tiền sản phẩm :</label>
                     @if (@Model.Giamgia != null)
                     {
-                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giamoi)</div>
                     }
                     else
                     {
@@ -31,7 +31,7 @@
                     <label>Tổng tiền :</label>
                     @if (@Model.Giamgia != null)
                     {
-                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giá_mới)</div>
+                        <div class="value pull-right">@string.Format("{0:0,0}", @Model.Soluong * @Model.giamoi)</div>
                     }
                     else
                     {

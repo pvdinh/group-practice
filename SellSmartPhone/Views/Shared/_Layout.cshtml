@@ -94,7 +94,7 @@
 
                                 </ul>
                             </li>
-                            <li><a href="/login/logout">Đăng xuất</a></li>
+                            <li><a href="/login/logout" onclick="signOut();">Đăng xuất</a></li>
                         </ul>
                     </div>
                 }
@@ -179,7 +179,7 @@
                     <div class="top-cart-row-container">
                         <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
                         <div class="top-cart-holder dropdown animate-dropdown" id="basket">
-                            @RenderSection("Iconcart", required:true)
+                            @RenderSection("Iconcart", required: true)
                         </div><!-- /.top-cart-holder -->
                     </div><!-- /.top-cart-row-container -->
                     <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->
@@ -345,6 +345,26 @@
     <!-- For demo purposes – can be removed on production : End -->
 
     <script src="https://w.sharethis.com/button/buttons.js"></script>
+
+    <!--===========================Logout APT Google======================================= -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <meta name="google-signin-client_id" content="940653054889-kegoojrlbqo5qh74s25761rpr9jb6vl8.apps.googleusercontent.com">
+    <script type="text/javascript">
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                auth2.disconnect();
+            });
+
+        }
+
+        function onLoad() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init();
+            });
+        }
+    </script>
 
 </body>
 </html>
