@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SellSmartPhone.Models.HandleCart.Cart>
+
+@{ double? total = 0;
+}
+
+<link href="~/template/assets/css/main.css" rel="stylesheet" />
+<div class="container">
+    <div class="col-xs-12 col-md-9 items-holder no-margin">
+        @foreach (var item in Model)
+        {
+            <div class="row no-margin cart-item">
+                <div class="col-xs-12 col-sm-2 no-margin" style="border: 1px solid #e0e0e0;">
+                    <a href="#" >
+                        @if (item.LoaiSP == 1111)
+                        {
+                            <img style="padding: 10px;height:146px;" alt="@item.TenSP" src="/image/smartphone/@item.tenhang.Replace(" ",string.Empty).ToLower()/@item.Anh">
+                        }
+                        else
+                        {
+                            <img style="padding: 10px;height:146px;" alt="@item.TenSP" src="/image/@item.TenLoai/@item.Anh">
+                        }
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 ">
+                    <div class="title">
+                        <a href="#"> @item.TenSP </a>
+                    </div>
+                    <div class="brand">
+                        @item.tenhang
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 no-margin">
+                    <div class="quantity">
+                            <strong style="font-size:15px;">@item.Soluong</strong> 
+                    </div>
+                </div>
+                @if (item.Giamgia != null)
+                {
+                    <div class="col-xs-12 col-sm-2 no-margin">
+                        <div class="price" style="padding-right:15px;">
+                            <strong>@string.Format("{0:0,0}", item.giamoi) VNĐ</strong><br /><strong style="text-decoration:line-through">@string.Format("{0:0,0}", item.Gia) VNĐ</strong>
+                        </div>
+                    </div>
+                    total += item.giamoi * item.Soluong;
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-2 no-margin">
+                        <div class="price" style="padding-right:15px;">
+                            <strong>@string.Format("{0:0,0}", item.Gia) VNĐ</strong>
+                        </div>
+                    </div>
+                    total += item.Gia * item.Soluong;
+                }
+
+            </div>
+
+        }
+    </div>
+    <!-- ========================================= SIDEBAR ========================================= -->
+    <div class="col-xs-12 col-md-3 no-margin sidebar" style="padding-left:30px;">
+        <div class="widget cart-summary">
+            <h1 class="border">Giỏ hàng</h1>
+            <div class="body">
+                <ul class="tabled-data no-border inverse-bold">
+                    <li>
+                        <label>Tổng tiền sản phẩm :</label>
+                        <div class="value pull-right">@string.Format("{0:0,0}", total)</div>
+                    </li>
+                    <li>
+                        <label>Phí vận chuyển :</label>
+                        <div class="value pull-right">Miễn phí</div>
+                    </li>
+                </ul>
+                <ul id="total-price" class="tabled-data inverse-bold no-border">
+                    <li>
+                        <label>Tổng tiền :</label>
+                        <div class="value pull-right">@string.Format("{0:0,0}", total)</div>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.widget
+    </div><!-- /.sidebar -->
+</div>
+<!-- ========================================= SIDEBAR : END ========================================= -->

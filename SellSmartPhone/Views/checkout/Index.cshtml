@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Iconcart{
+    <a href="/cart/index">
+        <div class="basket-item-count">
+            <img src="~/template/assets/images/icon-cart.png" alt="" />
+        </div>
+    </a>
+}
+@*Thu vien ajax*@
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div>
+    @if (TempData["alertcheckout"] != null)
+    {
+        <div id="AlertBox" class="alert @TempData["AlertType"] " style="text-align:center;">
+            @TempData["alertcheckout"]
+        </div>
+    }
+    @if (TempData["checkout"] != null)
+    {
+        <div id="AlertBox" class="alert alert-success" style="text-align:center;">
+            @TempData["checkout"]
+        </div>
+    }
+</div>
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        @if (ViewBag.countincart != null && ViewBag.countincart > 0)
+        {
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <h1>Sản phẩm đã chọn</h1>
+                </div>
+                <div class="goods-page" id="Cart">
+                    @{ Html.RenderAction("Cart");}
+                </div>
+            </div>
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="goods-page" id="Cart">
+                    @{ Html.RenderAction("InfoCustomer","checkout");}
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        }
+        else
+        {
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <h1>Giỏ Hàng</h1>
+                    <div class="shopping-cart-page">
+                        <div class="shopping-cart-data clearfix">
+                            <p>Giỏ hàng hiện đang trống !</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CONTENT -->
+            </div>
+        }
+
+        <!-- END SIDEBAR & CONTENT -->
+        <!-- BEGIN SIMILAR PRODUCTS -->
+        @{ Html.RenderAction("productrelate", "Home");}
+        <!-- END SIMILAR PRODUCTS -->
+    </div>
+</div>
+<script>
+    document.title = "Thanh toán"
+</script>

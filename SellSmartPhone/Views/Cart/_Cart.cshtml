@@ -10,15 +10,15 @@
             {
 
             <div class="row no-margin cart-item">
-                <div class="col-xs-12 col-sm-2 no-margin">
-                    <a href="#" class="thumb-holder">
+                <div class="col-xs-12 col-sm-2 no-margin" style="border: 1px solid #e0e0e0;">
+                    <a href="#">
                         @if (item.LoaiSP == 1111)
                         {
-                            <img style="padding: 10px;" alt="@item.TenSP" src="/image/smartphone/@item.tenhang.Replace(" ",string.Empty).ToLower()/@item.Anh">
+                            <img style="padding: 10px;height:146px;" alt="@item.TenSP" src="/image/smartphone/@item.tenhang.Replace(" ",string.Empty).ToLower()/@item.Anh">
                         }
                         else
                         {
-                            <img style="padding: 10px;" alt="@item.TenSP" src="/image/@item.TenLoai/@item.Anh">
+                            <img style="padding: 10px;height:146px;" alt="@item.TenSP" src="/image/@item.TenLoai/@item.Anh">
                         }
                     </a>
                 </div>
@@ -79,10 +79,6 @@
                             <div class="value pull-right">@string.Format("{0:0,0}", total)</div>
                         </li>
                         <li>
-                            <label>Tổng số lượng :</label>
-                            <div class="value pull-right">ViewBag.countCart</div>
-                        </li>
-                        <li>
                             <label>Phí vận chuyển :</label>
                             <div class="value pull-right">Miễn phí</div>
                         </li>
@@ -94,21 +90,9 @@
                         </li>
                     </ul>
                     <div class="buttons-holder">
-                        <a class="le-button big" href="@Url.Action("Checkout", "Cart")">Chấp thuận</a>
-                        <a class="simple-link block" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>
+                        <a class="le-button big" href="@Url.Action("index", "checkout")">Chấp thuận</a>
+                        @*<a class="le-button big" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>*@
                     </div>
-                </div>
-            </div><!-- /.widget -->
-
-            <div id="cupon-widget" class="widget">
-                <h1 class="border">Mã khuyến mãi</h1>
-                <div class="body">
-                    <form>
-                        <div class="inline-input">
-                            <input data-placeholder="enter coupon code" type="text" class="placeholder" />
-                            <button class="le-button" type="submit">Áp dụng</button>
-                        </div>
-                    </form>
                 </div>
             </div><!-- /.widget -->
         </div><!-- /.sidebar -->

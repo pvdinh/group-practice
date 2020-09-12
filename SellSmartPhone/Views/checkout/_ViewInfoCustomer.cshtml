@@ -1,0 +1,66 @@
+﻿@model SellSmartPhone.Models.Account
+<form action="/Checkout/result" class="form-horizontal" method="post" role="form">
+    <div class="col-md-12 col-sm-12">
+        <h1>Thông tin khách hàng</h1>
+    </div>
+    <div class="goods-data clearfix">
+        <div class="table-wrapper-responsive">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Người nhận :</label>
+                <div class="col-md-10">
+                    <input class="form-control" name="Hoten" required="true" type="text" value="@Model.Hoten">
+                    <span class="field-validation-valid" data-valmsg-for="buyer" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email :</label>
+                <div class="col-md-10">
+                    <input class="form-control" name="Email" required="true type="text" value="@Model.Email.Replace(" ",string.Empty)">
+                    <span class="field-validation-valid" data-valmsg-for="seller" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" type="number">Điện thoại :</label>
+                <div class="col-md-10">
+                    <input class="form-control" name="Phonenumber" required="true" type="number" value="@Model.Phonenumber.Replace(" ",string.Empty)">
+                    <span class="field-validation-valid" data-valmsg-for="phoneNumber" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Địa chỉ :</label>
+                <div class="col-md-10">
+                    <input class="form-control" name="Address" required="true" type="text" value="@Model.Address" aria-required="true">
+                    <span class="field-validation-valid" data-valmsg-for="address" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Ghi chú :</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" cols="20" id="Note" name="ghichu" rows="2"></textarea>
+                    <span class="field-validation-valid" data-valmsg-for="Note" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12" style="margin-top: 40px;">
+        <h1>Phương thức thanh toán</h1>
+    </div>
+    <div class="goods-data clearfix">
+        <div id="payment-method-options">
+            <div class="payment-method-option">
+                <input class="le-radio" type="radio" name="group2" value="Thanh toán khi giao hàng"><i class="fake-box"></i>
+                <div class="radio-label bold " style="display:inline;">Thanh toán khi giao hàng</div>
+            </div><!-- /.payment-method-option -->
+
+            <div class="payment-method-option">
+                <input class="le-radio" type="radio" name="group2" value="Thanh toán trực tuyến"><i class="fake-box"></i>
+                <div class="radio-label bold " style="display:inline;">Thanh toán trực tuyến</div>
+            </div><!-- /.payment-method-option -->
+        </div><!-- /#payment-method-options -->
+    </div>
+    <div class="buttons-holder" style="margin-top:20px;text-align:right;">
+        <a class="le-button big" href="@Url.Action("index", "home")">  <i class="fa fa-shopping-cart"> </i> Tiếp tục mua hàng</a>
+        <button type="submit" style="border:none;overflow:hidden;margin-left:20px;background:none;">  <a class="le-button big"><i class="fa fa-check"> </i> Chấp thuận</a></button>
+        @*<a class="le-button big" href="@Url.Action("Index", "Home")">Tiếp tục mua hàng</a>*@
+    </div>
+</form>
