@@ -18,11 +18,11 @@ namespace SellSmartPhone.Controllers
         protected void setAlert1(string message, string type)
         {
             TempData["AlertMessage"] = message;
-            
+
             if (type == "warning")
             {
                 TempData["AlertType"] = "alert-warning";
-            }   
+            }
         }
         // GET: Register
         public ActionResult Index()
@@ -31,9 +31,9 @@ namespace SellSmartPhone.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(AccLogin Input,Account ACC )
+        public ActionResult Index(AccLogin Input, Account ACC)
         {
-           
+
             var CheckMail = db.Accounts.Where(p => p.Email == Input.EmailLogin).FirstOrDefault();
             if (CheckMail == null)
             {
@@ -49,7 +49,7 @@ namespace SellSmartPhone.Controllers
                     try
                     {
                         var IDMax = db.Accounts.OrderByDescending(s => s.IDAccount).Take(1).FirstOrDefault();
-                        ACC.IDAccount = IDMax.IDAccount +1;
+                        ACC.IDAccount = IDMax.IDAccount + 1;
                         ACC.Password = Input.Password;
                         ACC.Phonenumber = Input.phone;
                         ACC.Ngaysinh = Input.DateOfBirth;
@@ -64,13 +64,13 @@ namespace SellSmartPhone.Controllers
                         throw;
                     }
                 }
-                
+
             }
             else
             {
                 setAlert1("Email da ton tai", "error");
                 return View("Index");
-            }           
+            }
         }
 
         public ActionResult ForgetPassword()
@@ -82,13 +82,21 @@ namespace SellSmartPhone.Controllers
         public ActionResult SubmitPassword(string Email)
         {
             TempData["email"] = Email;
+            int newpassword = new Random().Next(11111, 99999);
+            Session["check"] = newpassword;
+            if (Session["check"] != Session["newpassword"] && Session["newpassword"] != null)
+            {
+                TempData["warning"] = "Request time out !!";
 
+                return View("ForgetPassword");
+            }
+            Session["newpassword"] = newpassword;
             var user = db.Accounts.SqlQuery("SELECT * FROM dbo.Account WHERE Email=@Email", new SqlParameter("@Email", Email)).FirstOrDefault();
-            if(user != null)
+            if (user != null)
             {
                 MailMessage mail = new MailMessage("phamvandinhxyz@gmail.com", Email);
-                mail.Subject="Your Password !";
-                mail.Body = string.Format("Hello : <h2>{0}</h2> Your password is : <h1>{1}</h1>.",user.Hoten,user.Password);
+                mail.Subject = "Your Password !";
+                mail.Body = string.Format("Hello : <h2>{0}</h2> Your password is : <h1>{1}</h1>.", user.Hoten, newpassword);
                 mail.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
@@ -107,8 +115,11 @@ namespace SellSmartPhone.Controllers
             {
                 TempData["warning"] = "User not Exist !!";
             }
+
             return View("ForgetPassword");
         }
 
     }
+
+
 }

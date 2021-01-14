@@ -18,6 +18,7 @@ namespace SellSmartPhone.Controllers
         public ActionResult Index(int? idSP)
         {
             int MaKH = int.Parse(Session["idaccount"].ToString());
+            Account ac = new Account();
             cart.ListCart = new Cart().GetCart(MaKH);
             if (idSP != null)
             {
